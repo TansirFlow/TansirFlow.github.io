@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="zh-cn">
+  <head>
+    <title>docker部署Maddy Mail Server实现自建邮箱服务器 // Tansor&#39;s Blog</title>
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <meta charset="utf-8" />
+    <meta name="generator" content="Hugo 0.123.4">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="Tansor" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="/css/main.min.5b1fcc8902588589c4767187402a3c29f8b8d7a6fdef6d9f8f77045bb0d14fee.css" />
+    
+
+    
+    <meta name="twitter:card" content="summary"/><meta name="twitter:title" content="docker部署Maddy Mail Server实现自建邮箱服务器"/>
+<meta name="twitter:description" content="docker部署Maddy Mail Server实现自建邮箱服务器 材料准备 顶级域名一个 域名对应的证书 安装有docker环境的服务器（此处使用1panel便于管理docker环境） 安装1panel 官方安装教程 在线安装 - 1Panel 文档
+首先使用ssh连接服务器
+我这里用的是Ubuntu，所以选Ubuntu选项卡，复制对应安装命令到终端执行
+curl -sSL https://resource.fit2cloud.com/1panel/package/quick_start.sh -o quick_start.sh &amp;&amp; sudo bash quick_start.sh 按照提示设置端口、用户名和密码，然后按照提示访问1panel面板
+用户名和密码填写刚才自己设定的用户名和密码，进入控制面板主页
+获取域名证书 [notes/web/如何获取Let‘s Encrypt SSL泛型域名证书.md at main · tansor1/notes (github.com)](https://github.com/tansor1/notes/blob/main/web/如何获取Let‘s Encrypt SSL泛型域名证书.md)
+私钥和证书以文件形式保留，分别为
+fullchain.pem (证书) privkey.pem (私钥) 配置镜像加速（可选） 温馨提示：如果是中国大陆的服务器，可以先到应用商店--已安装页面快速跳转完成配置docker镜像加速
+docker安装Maddy Mail Server 首先在ssh登录服务器的终端执行如下命令
+docker volume create maddydata 到应用商店--全部页面搜索 maddy ，点击 安装
+修改mail.example.com为你自己的带mail前缀的子域名，比如你的域名是123.top，那么此处填写mail.123.top,同时勾选端口外部访问
+上传域名证书 在ssh登录服务器的终端依次执行以下命令
+# 进入存储卷路径 cd $(docker volume inspect maddydata --format &#39;{{.Mountpoint}}&#39;) # 创建证书文件夹 mkdir -p tls 在管理面板的主机--文件页面，找到/var/lib/docker/volumes/maddydata/_data/tls目录，上传你的证书和私钥文件"/>
+
+    <meta property="og:title" content="docker部署Maddy Mail Server实现自建邮箱服务器" />
+<meta property="og:description" content="docker部署Maddy Mail Server实现自建邮箱服务器 材料准备 顶级域名一个 域名对应的证书 安装有docker环境的服务器（此处使用1panel便于管理docker环境） 安装1panel 官方安装教程 在线安装 - 1Panel 文档
+首先使用ssh连接服务器
+我这里用的是Ubuntu，所以选Ubuntu选项卡，复制对应安装命令到终端执行
+curl -sSL https://resource.fit2cloud.com/1panel/package/quick_start.sh -o quick_start.sh &amp;&amp; sudo bash quick_start.sh 按照提示设置端口、用户名和密码，然后按照提示访问1panel面板
+用户名和密码填写刚才自己设定的用户名和密码，进入控制面板主页
+获取域名证书 [notes/web/如何获取Let‘s Encrypt SSL泛型域名证书.md at main · tansor1/notes (github.com)](https://github.com/tansor1/notes/blob/main/web/如何获取Let‘s Encrypt SSL泛型域名证书.md)
+私钥和证书以文件形式保留，分别为
+fullchain.pem (证书) privkey.pem (私钥) 配置镜像加速（可选） 温馨提示：如果是中国大陆的服务器，可以先到应用商店--已安装页面快速跳转完成配置docker镜像加速
+docker安装Maddy Mail Server 首先在ssh登录服务器的终端执行如下命令
+docker volume create maddydata 到应用商店--全部页面搜索 maddy ，点击 安装
+修改mail.example.com为你自己的带mail前缀的子域名，比如你的域名是123.top，那么此处填写mail.123.top,同时勾选端口外部访问
+上传域名证书 在ssh登录服务器的终端依次执行以下命令
+# 进入存储卷路径 cd $(docker volume inspect maddydata --format &#39;{{.Mountpoint}}&#39;) # 创建证书文件夹 mkdir -p tls 在管理面板的主机--文件页面，找到/var/lib/docker/volumes/maddydata/_data/tls目录，上传你的证书和私钥文件" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://tansor1.github.io/post/docker/docker%E9%83%A8%E7%BD%B2maddy-mail-server%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%BB%BA%E9%82%AE%E7%AE%B1%E6%9C%8D%E5%8A%A1%E5%99%A8/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2024-02-27T22:59:31+08:00" />
+<meta property="article:modified_time" content="2024-02-27T22:59:31+08:00" />
+
+
+
+  </head>
+  <body>
+    <header class="app-header">
+      <a href="https://tansor1.github.io/"><img class="app-header-avatar" src="/avatar.jpg" alt="Tansor" /></a>
+      <span class="app-header-title">Tansor&#39;s Blog</span>
+      <nav class="app-header-menu">
+          <a class="app-header-menu-item" href="/">Home</a>
+             - 
+          
+          <a class="app-header-menu-item" href="/tags/">Tags</a>
+             - 
+          
+          <a class="app-header-menu-item" href="/about/">About</a>
+      </nav>
+      <p>我剑也未尝不利</p>
+      <div class="app-header-social">
+        
+          <a href="https://github.com/tansor1" target="_blank" rel="noreferrer noopener me">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-github">
+  <title>Github</title>
+  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+</svg>
+          </a>
+        
+          <a href="https://twitter.com/gohugoio" target="_blank" rel="noreferrer noopener me">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-twitter">
+  <title>Twitter</title>
+  <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+</svg>
+          </a>
+        
+      </div>
+    </header>
+    <main class="app-container">
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class ="post-title">docker部署Maddy Mail Server实现自建邮箱服务器</h1>
+      <div class="post-meta">
+        <div>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
+  <title>calendar</title>
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+</svg>
+          Feb 27, 2024
+        </div>
+        <div>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
+  <title>clock</title>
+  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+          1 min read
+        </div>
+      </div>
+    </header>
+    <div class="post-content">
+      <h1 id="docker部署maddy-mail-server实现自建邮箱服务器">docker部署Maddy Mail Server实现自建邮箱服务器</h1>
+<h2 id="材料准备">材料准备</h2>
+<ol>
+<li>顶级域名一个</li>
+<li>域名对应的证书</li>
+<li>安装有docker环境的服务器（此处使用1panel便于管理docker环境）</li>
+</ol>
+<h2 id="安装1panel">安装1panel</h2>
+<p>官方安装教程  <a href="https://1panel.cn/docs/installation/online_installation/">在线安装 - 1Panel 文档</a></p>
+<p>首先使用ssh连接服务器</p>
+<p>我这里用的是Ubuntu，所以选Ubuntu选项卡，复制对应安装命令到终端执行</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>curl -sSL https://resource.fit2cloud.com/1panel/package/quick_start.sh -o quick_start.sh <span style="color:#f92672">&amp;&amp;</span> sudo bash quick_start.sh
+</span></span></code></pre></div><p><img src="https://cdn.jsdelivr.net/gh/tansor1/picture/img/202402270032971.png" alt="bd2edd4fb7d8b1d58ee88ec2f6551974"></p>
+<p>按照提示设置端口、用户名和密码，然后按照提示访问1panel面板</p>
+<p><img src="https://cdn.jsdelivr.net/gh/tansor1/picture/img/202402270036408.png" alt="image-20240227003609067"></p>
+<p>用户名和密码填写刚才自己设定的用户名和密码，进入控制面板主页</p>
+<h2 id="获取域名证书">获取域名证书</h2>
+<p>[notes/web/如何获取Let‘s Encrypt SSL泛型域名证书.md at main · tansor1/notes (github.com)](<a href="https://github.com/tansor1/notes/blob/main/web/">https://github.com/tansor1/notes/blob/main/web/</a>如何获取Let‘s Encrypt SSL泛型域名证书.md)</p>
+<p>私钥和证书以文件形式保留，分别为</p>
+<ul>
+<li>fullchain.pem    (证书)</li>
+<li>privkey.pem      (私钥)</li>
+</ul>
+<h2 id="配置镜像加速可选">配置镜像加速（可选）</h2>
+<p>温馨提示：如果是中国大陆的服务器，可以先到<code>应用商店--已安装</code>页面快速跳转完成配置<code>docker镜像加速</code></p>
+<p><img src="https://cdn.jsdelivr.net/gh/tansor1/picture/img/202402270039774.png" alt="0bef80be053d7306eac01beb9193f518"></p>
+<h2 id="docker安装maddy-mail-server">docker安装Maddy Mail Server</h2>
+<p>首先在ssh登录服务器的终端执行如下命令</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>docker volume create maddydata
+</span></span></code></pre></div><p>到<code>应用商店--全部</code>页面搜索 <code>maddy</code> ，点击 <code>安装</code></p>
+<p><img src="https://cdn.jsdelivr.net/gh/tansor1/picture/img/202402270041225.png" alt="89436f1175bf46bc37fd79ea449e1b5f"></p>
+<p>修改mail.example.com为你自己的带mail前缀的子域名，比如你的域名是<code>123.top</code>，那么此处填写<code>mail.123.top</code>,同时勾选端口外部访问</p>
+<p><img src="https://cdn.jsdelivr.net/gh/tansor1/picture/img/202402270049830.png" alt="ba33b19599014601cb453608798d2856"></p>
+<h2 id="上传域名证书">上传域名证书</h2>
+<p>在ssh登录服务器的终端依次执行以下命令</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span><span style="color:#75715e"># 进入存储卷路径</span>
+</span></span><span style="display:flex;"><span>cd <span style="color:#66d9ef">$(</span>docker volume inspect maddydata --format <span style="color:#e6db74">&#39;{{.Mountpoint}}&#39;</span><span style="color:#66d9ef">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 创建证书文件夹</span>
+</span></span><span style="display:flex;"><span>mkdir -p tls
+</span></span></code></pre></div><p>在管理面板的<code>主机--文件</code>页面，找到<code>/var/lib/docker/volumes/maddydata/_data/tls</code>目录，上传你的证书和私钥文件</p>
+<ul>
+<li>fullchain.pem</li>
+<li>privkey.pem</li>
+</ul>
+<p>然后到<code>应用商店--已安装</code>页面重启<code>maddy-mail</code>这个应用</p>
+<p>按要求上传完成证书文件后，容器会正常运行</p>
+<h2 id="设置dkim-dns解析">设置DKIM DNS解析</h2>
+<p>在管理面板的<code>主机--文件</code>页面，找到<code>/var/lib/docker/volumes/maddydata/_data/dkim_keys/example.com_default.dns</code>目录，其中<code>example.com</code>代指你的域名，查看这个文件的内容，并且设置你的域名解析记录</p>
+<p><code>default._domainkey.example.com</code>，即头部为<code>default._domainkey</code>的子域名，设置TXT类型解析，解析内容就是刚才的文件内容</p>
+<h2 id="设置其他必要的dns解析">设置其他必要的DNS解析</h2>
+<table>
+<thead>
+<tr>
+<th>记录类型</th>
+<th>域名</th>
+<th>值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td><code>mail.example.com</code></td>
+<td><code>服务器ipv4地址</code></td>
+</tr>
+<tr>
+<td>A</td>
+<td><code>example.com</code></td>
+<td><code>服务器ipv4地址</code></td>
+</tr>
+<tr>
+<td>AAAA</td>
+<td><code>mail.example.com</code></td>
+<td><code>服务器ipv6地址（如果有）</code></td>
+</tr>
+<tr>
+<td>AAAA</td>
+<td><code>example.com</code></td>
+<td><code>服务器ipv6地址（如果有）</code></td>
+</tr>
+<tr>
+<td>MX</td>
+<td><code>example.com</code></td>
+<td><code>mail.example.com</code></td>
+</tr>
+<tr>
+<td>TXT</td>
+<td><code>mail.example.com</code></td>
+<td><code>v=spf1 mx ~all</code></td>
+</tr>
+<tr>
+<td>TXT</td>
+<td><code>example.com</code></td>
+<td><code>v=spf1 mx ~all</code></td>
+</tr>
+<tr>
+<td>TXT</td>
+<td><code>_dmarc.example.com</code></td>
+<td><code>v=DMARC1; p=quarantine; ruf=mailto:postmaster@example.com</code></td>
+</tr>
+<tr>
+<td>TXT</td>
+<td><code>_mta-sts.example.com</code></td>
+<td><code>v=STSv1; id=1</code></td>
+</tr>
+<tr>
+<td>TXT</td>
+<td><code>_smtp._tls.example.com</code></td>
+<td><code>v=TLSRPTv1;rua=mailto:postmaster@example.com</code></td>
+</tr>
+</tbody>
+</table>
+<p>注意将上述所有的<code>example.com</code>全部替换为你的域名</p>
+<h2 id="创建账户">创建账户</h2>
+<p>点击页面左侧<code>容器</code>，找到形如<code>1Panel-maddy-mail-xxxx</code>的容器，点击终端，点击连接，如果连不上请更换命令比如<code>/bin/sh</code></p>
+<p>依次执行以下命令</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>maddy creds create postmaster@example.com
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 此条命令执行完毕会提示输入密码等，这便是postmaster@example.com对应的账户密码，注意将example.com替换为自己的域名</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>maddy imap-acct create postmaster@example.com
+</span></span></code></pre></div><h2 id="使用邮件客户端登录邮箱账号">使用邮件客户端登录邮箱账号</h2>
+<p>一般使用IMAP进行收信，如有需要填写端口号，两个IMAP端口都尝试一下，一般SMTP端口写587，其他的也可以尝试</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">端口类别</th>
+<th style="text-align:left">端口号</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">SMTP 入站端口</td>
+<td style="text-align:left">25</td>
+</tr>
+<tr>
+<td style="text-align:left">IMAP4 端口</td>
+<td style="text-align:left">143</td>
+</tr>
+<tr>
+<td style="text-align:left">IMAP4 端口</td>
+<td style="text-align:left">993</td>
+</tr>
+<tr>
+<td style="text-align:left">SMTP 提交端口</td>
+<td style="text-align:left">465</td>
+</tr>
+<tr>
+<td style="text-align:left">SMTP 提交端口</td>
+<td style="text-align:left">587</td>
+</tr>
+</tbody>
+</table>
+
+    </div>
+    <div class="post-footer">
+      
+    </div>
+  </article>
+
+    </main>
+  </body>
+</html>

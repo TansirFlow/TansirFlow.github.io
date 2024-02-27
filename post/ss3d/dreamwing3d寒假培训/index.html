@@ -1,0 +1,546 @@
+<!doctype html>
+<html lang="zh-cn">
+  <head>
+    <title>DreamWing3D寒假第一次培训 // Tansor&#39;s Blog</title>
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <meta charset="utf-8" />
+    <meta name="generator" content="Hugo 0.123.4">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="Tansor" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="/css/main.min.5b1fcc8902588589c4767187402a3c29f8b8d7a6fdef6d9f8f77045bb0d14fee.css" />
+    
+
+    
+    <meta name="twitter:card" content="summary"/><meta name="twitter:title" content="DreamWing3D寒假第一次培训"/>
+<meta name="twitter:description" content="DreamWing3D寒假第一次培训 一、RoboCup3D中常用Linux命令 rcssserver3d: 启动球场 pkill rcsss -9: 关闭球场 ​	用法：pkill [选项] 进程名 ​	选项：-9：强制杀死进程。 ​	示例：pkill rcssserver3d -9
+ls: 列出目录中的文件和子目录。 ​	用法：ls [选项] [文件/目录] ​	选项： ​	-l：以长格式显示文件和目录的详细信息。 ​	-a：显示所有文件和目录，包括隐藏文件。 ​	-h：以人类可读的格式显示文件大小。 ​	示例：ls -l /path/to/directory
+cd: 更改当前工作目录。 ​	用法：cd [目录] ​	示例：cd /path/to/directory
+pwd: 显示当前工作目录的路径。 ​	用法：pwd ​	示例：pwd
+mkdir: 创建一个新的目录。 ​	用法：mkdir [选项] 目录 ​	选项：-p：递归地创建目录，如果父级目录不存在，则创建它们。 ​	示例：mkdir /path/to/new_directory
+rm: 删除文件或目录。 ​	用法：rm [选项] 文件/目录 ​	选项： ​	-r：递归地删除目录和其中的文件。 ​	-f：强制删除，不提示确认。 ​	示例：rm -r /path/to/file_or_directory"/>
+
+    <meta property="og:title" content="DreamWing3D寒假第一次培训" />
+<meta property="og:description" content="DreamWing3D寒假第一次培训 一、RoboCup3D中常用Linux命令 rcssserver3d: 启动球场 pkill rcsss -9: 关闭球场 ​	用法：pkill [选项] 进程名 ​	选项：-9：强制杀死进程。 ​	示例：pkill rcssserver3d -9
+ls: 列出目录中的文件和子目录。 ​	用法：ls [选项] [文件/目录] ​	选项： ​	-l：以长格式显示文件和目录的详细信息。 ​	-a：显示所有文件和目录，包括隐藏文件。 ​	-h：以人类可读的格式显示文件大小。 ​	示例：ls -l /path/to/directory
+cd: 更改当前工作目录。 ​	用法：cd [目录] ​	示例：cd /path/to/directory
+pwd: 显示当前工作目录的路径。 ​	用法：pwd ​	示例：pwd
+mkdir: 创建一个新的目录。 ​	用法：mkdir [选项] 目录 ​	选项：-p：递归地创建目录，如果父级目录不存在，则创建它们。 ​	示例：mkdir /path/to/new_directory
+rm: 删除文件或目录。 ​	用法：rm [选项] 文件/目录 ​	选项： ​	-r：递归地删除目录和其中的文件。 ​	-f：强制删除，不提示确认。 ​	示例：rm -r /path/to/file_or_directory" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://tansor1.github.io/post/ss3d/dreamwing3d%E5%AF%92%E5%81%87%E5%9F%B9%E8%AE%AD/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2024-02-27T22:59:31+08:00" />
+<meta property="article:modified_time" content="2024-02-27T22:59:31+08:00" />
+
+
+
+  </head>
+  <body>
+    <header class="app-header">
+      <a href="https://tansor1.github.io/"><img class="app-header-avatar" src="/avatar.jpg" alt="Tansor" /></a>
+      <span class="app-header-title">Tansor&#39;s Blog</span>
+      <nav class="app-header-menu">
+          <a class="app-header-menu-item" href="/">Home</a>
+             - 
+          
+          <a class="app-header-menu-item" href="/tags/">Tags</a>
+             - 
+          
+          <a class="app-header-menu-item" href="/about/">About</a>
+      </nav>
+      <p>我剑也未尝不利</p>
+      <div class="app-header-social">
+        
+          <a href="https://github.com/tansor1" target="_blank" rel="noreferrer noopener me">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-github">
+  <title>Github</title>
+  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+</svg>
+          </a>
+        
+          <a href="https://twitter.com/gohugoio" target="_blank" rel="noreferrer noopener me">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-twitter">
+  <title>Twitter</title>
+  <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+</svg>
+          </a>
+        
+      </div>
+    </header>
+    <main class="app-container">
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class ="post-title">DreamWing3D寒假第一次培训</h1>
+      <div class="post-meta">
+        <div>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
+  <title>calendar</title>
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+</svg>
+          Feb 27, 2024
+        </div>
+        <div>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
+  <title>clock</title>
+  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+          4 min read
+        </div>
+      </div>
+    </header>
+    <div class="post-content">
+      <h1 id="dreamwing3d寒假第一次培训">DreamWing3D寒假第一次培训</h1>
+<h1 id="一robocup3d中常用linux命令">一、RoboCup3D中常用Linux命令</h1>
+<ol>
+<li>rcssserver3d: 启动球场</li>
+<li>pkill rcsss -9: 关闭球场</li>
+</ol>
+<p>​		用法：pkill [选项] 进程名
+​		选项：-9：强制杀死进程。
+​		示例：pkill rcssserver3d -9</p>
+<ol start="3">
+<li>ls: 列出目录中的文件和子目录。</li>
+</ol>
+<p>​		用法：ls [选项] [文件/目录]
+​		选项：
+​		-l：以长格式显示文件和目录的详细信息。
+​		-a：显示所有文件和目录，包括隐藏文件。
+​		-h：以人类可读的格式显示文件大小。
+​		示例：ls -l /path/to/directory</p>
+<ol start="4">
+<li>cd: 更改当前工作目录。</li>
+</ol>
+<p>​		用法：cd [目录]
+​		示例：cd /path/to/directory</p>
+<ol start="5">
+<li>pwd: 显示当前工作目录的路径。</li>
+</ol>
+<p>​		用法：pwd
+​		示例：pwd</p>
+<ol start="6">
+<li>mkdir: 创建一个新的目录。</li>
+</ol>
+<p>​		用法：mkdir [选项] 目录
+​		选项：-p：递归地创建目录，如果父级目录不存在，则创建它们。
+​		示例：mkdir /path/to/new_directory</p>
+<ol start="7">
+<li>rm: 删除文件或目录。</li>
+</ol>
+<p>​		用法：rm [选项] 文件/目录
+​		选项：
+​		-r：递归地删除目录和其中的文件。
+​		-f：强制删除，不提示确认。
+​		示例：rm -r /path/to/file_or_directory</p>
+<ol start="8">
+<li>cp: 复制文件或目录。</li>
+</ol>
+<p>​		用法：cp [选项] 源文件/目录 目标文件/目录
+​		选项：
+​		-r：递归地复制目录和其中的文件。
+​		-v：显示复制的详细信息。
+​		示例：cp -r /path/to/source /path/to/destination</p>
+<ol start="9">
+<li>mv: 移动文件或目录，或重命名文件或目录。</li>
+</ol>
+<p>​		用法：mv [选项] 源文件/目录 目标文件/目录
+​		选项：
+​		-i：在覆盖之前提示确认。
+​		示例：mv /path/to/source /path/to/destination</p>
+<ol start="10">
+<li>cat: 显示文件的内容。</li>
+</ol>
+<p>​		用法：cat [选项] 文件
+​		选项：
+​		-n：显示行号。
+​		示例：cat /path/to/file</p>
+<ol start="11">
+<li>chmod: 修改文件或目录的权限。</li>
+</ol>
+<p>​		用法：chmod [选项] 权限 文件/目录
+​		选项：
+​		-R：递归地修改权限。
+​		示例：chmod 755 /path/to/file</p>
+<ol start="12">
+<li>sudo: 以管理员权限执行命令。</li>
+</ol>
+<p>​		用法：sudo 命令
+​		示例：sudo apt-get update</p>
+<ol start="13">
+<li>su: 切换到其他用户。</li>
+</ol>
+<p>​		用法：su [选项] [用户名]
+​		选项：-l：切换到目标用户的登录环境。
+​		示例：su -l username</p>
+<ol start="14">
+<li>top: 实时显示系统中运行的进程和资源使用情况。</li>
+</ol>
+<p>​		用法：top
+​		示例：top</p>
+<ol start="15">
+<li>vim的简单使用</li>
+</ol>
+<h1 id="二robocup3d比赛规则简介">二、RoboCup3D比赛规则简介</h1>
+<h2 id="明年可能的规则">明年可能的规则</h2>
+<ol>
+<li>小组赛选出16强</li>
+<li>16~最后一名排位赛</li>
+<li>16强天梯赛</li>
+<li>据说还要搞什么复活赛</li>
+<li><strong>更换Ubuntu22操作系统</strong></li>
+</ol>
+<h1 id="三环境安装机器人模型动作编辑">三、环境安装&amp;机器人模型&amp;动作编辑</h1>
+<h2 id="1仿真环境rcssserver3d">1.仿真环境rcssserver3d</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e"># 先换阿里源</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 第一步：更新列表</span>
+</span></span><span style="display:flex;"><span>sudo apt-get update
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 第二步：安装依赖库</span>
+</span></span><span style="display:flex;"><span>sudo apt-get install g++ git make cmake libfreetype6-dev libode-dev libsdl1.2-dev ruby ruby-dev libdevil-dev libboost-dev libboost-thread-dev libboost-regex-dev libboost-system-dev qtbase5-dev qtchooser qt5-qmake
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 第三步：克隆模拟软件的源代码</span>
+</span></span><span style="display:flex;"><span>git clone https://gitlab.com/robocup-sim/SimSpark.git
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 第四步：进入源代码的目录</span>
+</span></span><span style="display:flex;"><span>cd SimSpark
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 第五步：本地编译代码</span>
+</span></span><span style="display:flex;"><span>./build.sh
+</span></span></code></pre></div><h2 id="2nao机器人模型">2.Nao机器人模型</h2>
+<h3 id="1-实体nao机器人">(1) 实体Nao机器人</h3>
+<p><img src="https://cdn.jsdelivr.net/gh/tansor1/picture/img/202402270006121.png" alt="image-20240227000641073"></p>
+<p>真实的Nao机器人（实验室还有两个能用的，四个报废的)</p>
+<h3 id="2-仿真的nao">(2) 仿真的Nao</h3>
+<p>仿真平台指定了五种机器人，参赛队至少使用其中的三种，且每种至少两个，五种机器人在magmaOffenburg底层中分别被称为<code>Nao</code>type0、<code>Nao1</code>type1、<code>Nao2</code>type2、<code>Nao3</code>type3、<code>NaoToe</code>type4，magma底层中Nao1和Nao3的走路十分不稳定，所以我们采用Nao、Nao2、NaoToe
+其中<code>NaoToe</code>和其它几种区别最大，因为他的脚趾比较扁平，脚掌很大，不仅容易训练出<strong>快速踢球</strong>技能，也会减小踢球失败概率，因为这个原因，无论是老UT底层还是新magma底层，都采用了这种型号的机器人</p>
+<table>
+<thead>
+<tr>
+<th><img src="https://cdn.nlark.com/yuque/0/2024/png/40792520/1705160224023-bc660468-03ba-4086-b800-60294189a15c.png#averageHue=%232d6013&amp;clientId=ucae1be41-c7a2-4&amp;from=paste&amp;height=427&amp;id=ud55b62ec&amp;originHeight=860&amp;originWidth=445&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=317730&amp;status=done&amp;style=none&amp;taskId=ufe132233-6e21-4625-a71f-666f3fa7b8e&amp;title=&amp;width=221" alt="image.png"></th>
+<th><img src="https://cdn.nlark.com/yuque/0/2024/png/40792520/1705160196505-90c49eec-a275-43b8-8c46-ab9b19d2b648.png#averageHue=%232e6113&amp;clientId=ucae1be41-c7a2-4&amp;from=paste&amp;height=427&amp;id=u9d17d2e0&amp;originHeight=921&amp;originWidth=464&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=330028&amp;status=done&amp;style=none&amp;taskId=u7d039c89-fe67-4159-ba96-a112ee1f89c&amp;title=&amp;width=215" alt="image.png"></th>
+<th><img src="https://cdn.nlark.com/yuque/0/2024/png/40792520/1705160172620-c3d55b5d-20a8-409c-bbb6-a5340cd32daa.png#averageHue=%232f6214&amp;clientId=ucae1be41-c7a2-4&amp;from=paste&amp;height=709&amp;id=u0f45e0f2&amp;originHeight=886&amp;originWidth=469&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=350424&amp;status=done&amp;style=none&amp;taskId=uaeaa4df1-b24e-4ea7-9214-3c847982550&amp;title=&amp;width=375.2" alt="image.png"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Nao</strong></td>
+<td><strong>Nao2</strong></td>
+<td><strong>NaoToe（综合性能最强）</strong></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th><img src="https://cdn.nlark.com/yuque/0/2024/png/40792520/1705160322377-66b4eeac-81c7-4d02-a27e-a91a11b8b755.png#averageHue=%232d6013&amp;clientId=ucae1be41-c7a2-4&amp;from=paste&amp;height=466&amp;id=y4SOl&amp;originHeight=858&amp;originWidth=449&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=329468&amp;status=done&amp;style=none&amp;taskId=uff0873bb-5cf6-4b3c-8798-ed4bc9beb9b&amp;title=&amp;width=244" alt="image.png"></th>
+<th><img src="https://cdn.nlark.com/yuque/0/2024/png/40792520/1705160354767-460fbcf5-1a10-40a8-8580-d3cc6c6feece.png#averageHue=%232e6114&amp;clientId=ucae1be41-c7a2-4&amp;from=paste&amp;height=467&amp;id=uff2e29fc&amp;originHeight=838&amp;originWidth=454&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=306725&amp;status=done&amp;style=none&amp;taskId=u92beda80-466c-4689-b977-a82b57d764d&amp;title=&amp;width=253" alt="image.png"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Nao1（细狗一号）老摔跤，爬起来接着摔</strong></td>
+<td><strong>Nao3（细狗二号）摔一下再也没起来过</strong></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th><strong>关节信息对照表</strong></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>AIUT动作编辑器命名</strong></td>
+<td><strong>magma底层中的命名</strong></td>
+<td><strong>角度范围</strong></td>
+<td><strong>描述</strong></td>
+</tr>
+<tr>
+<td>Left Shoulder Pitch</td>
+<td>LShoulderPitch</td>
+<td>-120~120</td>
+<td>手臂大臂抬起落下的角度</td>
+</tr>
+<tr>
+<td>Left Shoulder Roll</td>
+<td>LShoulderYaw</td>
+<td>-1~95</td>
+<td>手臂大臂向外张开闭合的角度</td>
+</tr>
+<tr>
+<td>Left Elbow Yaw</td>
+<td>LArmRoll</td>
+<td>-120~120</td>
+<td>手臂小臂旋转</td>
+</tr>
+<tr>
+<td>Left Elbow Roll</td>
+<td>LArmYaw</td>
+<td>-90~1</td>
+<td>手臂小臂与大臂形成的角度</td>
+</tr>
+<tr>
+<td>Left Hip Yaw-Pitch</td>
+<td>LHipYawPitch</td>
+<td>-90~1</td>
+<td>大腿根部与臀部倾斜连接</td>
+</tr>
+<tr>
+<td>Left Hip Roll</td>
+<td>LHipRoll</td>
+<td>-25~45</td>
+<td>大腿左右偏移</td>
+</tr>
+<tr>
+<td>Left Hip Pitch</td>
+<td>LHipPitch</td>
+<td>-25~100</td>
+<td>大腿前后偏移</td>
+</tr>
+<tr>
+<td>Left Knee Pitch</td>
+<td>LKneePitch</td>
+<td>-130~1</td>
+<td>膝盖弯曲</td>
+</tr>
+<tr>
+<td>Left Ankle Pitch</td>
+<td>LFootPitch</td>
+<td>-45~75</td>
+<td>脚上下倾角</td>
+</tr>
+<tr>
+<td>Left Ankle Roll</td>
+<td>LFootRoll</td>
+<td>-45~25</td>
+<td>脚左右倾斜</td>
+</tr>
+<tr>
+<td>Left Toe</td>
+<td>LToePitch</td>
+<td>-1~70</td>
+<td>脚趾头上下倾角（仅限NaoToe）</td>
+</tr>
+<tr>
+<td>Right Shoulder Pitch</td>
+<td>RShoulderPitch</td>
+<td>-120~120</td>
+<td>同上</td>
+</tr>
+<tr>
+<td>Right Shoulder Roll</td>
+<td>RShoulderYaw</td>
+<td>-95~1</td>
+<td>同上</td>
+</tr>
+<tr>
+<td>Right Elbow Yaw</td>
+<td>RArmRoll</td>
+<td>-120~120</td>
+<td>同上</td>
+</tr>
+<tr>
+<td>Right Elbow Roll</td>
+<td>RArmYaw</td>
+<td>-1~90</td>
+<td>同上</td>
+</tr>
+<tr>
+<td>Right Hip Yaw-Pitch</td>
+<td>RHipYawPitch</td>
+<td>-90~1</td>
+<td>同上</td>
+</tr>
+<tr>
+<td>Right Hip Roll</td>
+<td>RHipRoll</td>
+<td>-45~25</td>
+<td>同上</td>
+</tr>
+<tr>
+<td>Right Hip Pitch</td>
+<td>RHipPitch</td>
+<td>-25~100</td>
+<td>同上</td>
+</tr>
+<tr>
+<td>Right Knee Pitch</td>
+<td>RKneePitch</td>
+<td>-130~1</td>
+<td>同上</td>
+</tr>
+<tr>
+<td>Right Ankle Pitch</td>
+<td>RFootPitch</td>
+<td>-45~75</td>
+<td>同上</td>
+</tr>
+<tr>
+<td>Right Ankle Roll</td>
+<td>RFootRoll</td>
+<td>-25~45</td>
+<td>同上</td>
+</tr>
+<tr>
+<td>Right Toe</td>
+<td>RToePitch</td>
+<td>-1~70</td>
+<td>同上</td>
+</tr>
+</tbody>
+</table>
+<p>温馨提示：开源底层代码中<code>src/main/java/magma/agent/IHumanoidJoints.java</code>可以找到关节名称</p>
+<p><strong>什么是</strong><code>**AIUT动作编辑器**</code><strong>？</strong>
+一个适用于老UT底层的非常方便的用于动作编辑的程序，虽然该程序的动作合成逻辑是基于ut底层的，不适用于新底层，但是对于认识机器人关节还是很有帮助的
+github搜索“AIUT”或者点击下方链接</p>
+<ol>
+<li>备选链接1：<a href="http://vps.tansor.top/down/5TXtXFJghZcD.tar.gz">http://vps.tansor.top/down/5TXtXFJghZcD.tar.gz</a> 提取码:csnb（此版本已经编译过）</li>
+<li>备选链接2：<a href="http://124.71.154.186:8888/down/EWj8z8gL0wAY.gz">http://124.71.154.186:8888/down/EWj8z8gL0wAY.gz</a> 提取码:csnb</li>
+</ol>
+<h2 id="3动作编辑器简单尝试">3.动作编辑器简单尝试</h2>
+<h3 id="1播放已有的动作帧">(1)播放已有的动作帧</h3>
+<h3 id="2动手去设计动作">(2)动手去设计动作</h3>
+<p>帧：记录关节的数据，角度、速度
+插帧：两帧之间通过线性插值形成一个完整的流畅的动作
+7.02°/20ms最大</p>
+<h1 id="四程序运行机制简单分析">四、程序运行机制简单分析</h1>
+<h2 id="1球员代码与球场之间的信息传递">1.球员代码与球场之间的信息传递</h2>
+<p>1秒刷新50次，一个模拟周期20ms</p>
+<ol>
+<li>球员(agent)和球场(server)都是单独运行Linux操作系统上的软件程序，agent与server之间通过<code>**TCP协议**</code>构建了一个通道用于传输数据</li>
+<li>agent可以控制自己身上所有的关节速度，然后将关节速度控制的命令通过这个数据传输通道发给server，如果agent发送的数据符合要求(比如每个关节速度不能大于7.02rad/s)的话，server就会根据这些数据对球场的物体状况进行相应更改</li>
+<li>server每时每刻都在根据物理规则计算球场的物体变化，比如球与地面、球员之间的物理碰撞，球员与地面摩擦从而行走，agent的传感器会检测server的数据信息，然后通过传输通道返回到agent</li>
+<li>agent接受到球场的消息并解析得到球场状态，并根据这些数据做下一步的关节速度控制</li>
+</ol>
+<p><img src="https://cdn.nlark.com/yuque/0/2024/jpeg/40792520/1705907515033-ef5fa717-c8e7-4983-ba6d-7a56bc7f722e.jpeg" alt="">
+<img src="https://cdn.nlark.com/yuque/0/2024/jpeg/40792520/1705907889980-4b30368b-dcc2-443b-add8-729f3479d369.jpeg" alt="">
+<img src="https://cdn.nlark.com/yuque/0/2024/jpeg/40792520/1705856742919-3b491f16-2d17-4b1b-8041-c0f8c4fdf28e.jpeg" alt=""></p>
+<p>信息传递通过<code>**TCP协议**</code>，3100端口和3200端口
+3100端口，两支队伍的机器人控制程序连接该端口
+3200端口，RoboViz监视器连接此端口，用于人类查看模拟球场的信息</p>
+<p>球员程序向球场发送的是控制每个关节的<strong>速度</strong>信息，以及再合适时间发送<strong>传球模式</strong>请求</p>
+<p><strong>什么是传球模式？</strong>
+当我方球员距离球的距离小于<code>d1</code>且保持了一段时间<code>t</code>，同时对方所有球员与球的距离大于一定值<code>d2</code>时，我们可以在往服务器发送的信息中添加<code>&quot;(pass)&quot;</code>,如果<code>d1</code>,<code>t</code>,<code>d2</code>同时满足服务器的规则要求设定，比赛模式转变为传球模式<code>（PassMode）</code>,在这种模式下，球的周围会出现一个圈，只有我方球员能进入圈内踢球，当球被触碰或者超时一段时间后，圈会自动消失，比赛模式又恢复到正常<code>playOn</code>，一般用于球出现在后场时的防御举措，我们可以利用传球模式的无干扰环境将球传到20米外的前场，这种传球的成功与否往往在很大程度上影响局势的发展，也在一定程度上增加了比赛的趣味性。
+本质上是给开大很慢的队伍传球的机会，防止一直变态的快踢被薄纱，点名批评HFUT，快踢一脚16米，神仙都拦不住
+<img src="https://cdn.nlark.com/yuque/0/2024/png/40792520/1705310984889-38196e24-cd42-4c11-81d3-16aa9c04deb9.png#averageHue=%23745c1d&amp;clientId=u515f326f-9a44-4&amp;from=ui&amp;height=102&amp;id=MT4D2&amp;originHeight=141&amp;originWidth=134&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=24114&amp;status=done&amp;style=none&amp;taskId=u7102e35f-4c0b-4ca3-9b2e-0e81df2a489&amp;title=&amp;width=97" alt="图片1.png"></p>
+<p>球场回复的消息包含球场上物体的状态（比赛时间，机器人的位置，关节角度，传感器信息，球的位置）</p>
+<pre tabindex="0"><code>(time (now 93.60))
+(GS (t 0.00) (pm BeforeKickOff))    #GS GameState
+(hear 0.00 self 1000-501)
+(GYR (n torso) (rt -0.35 -0.36 -0.01))
+(ACC (n torso) (a 0.20 -0.20 9.79))
+(HJ (n hj1) (ax 0.33))
+(HJ (n hj2) (ax -3.31))
+(See (G2R (pol 17.55 -3.33 4.31))
+     (G1R (pol 17.52 3.27 4.07))
+     (F1R (pol 18.52 18.94 1.54))
+     (F2R (pol 18.52 -18.91 1.52))
+     (B (pol 8.51 -0.21 -0.17))
+     (P (team teamRed) (id 1)
+        (head (pol 16.98 -0.21 3.19))
+        (rlowerarm (pol 16.83 -0.06 2.80))
+        (llowerarm (pol 16.86 -0.36 3.10))
+        (rfoot (pol 17.00 0.29 1.68))
+        (lfoot (pol 16.95 -0.51 1.32)))
+     (P (team teamBlue) (id 1)
+        (rlowerarm (pol 0.18 -33.55 -20.16))
+        (llowerarm (pol 0.18 34.29 -19.80))))
+(HJ (n raj1) (ax 31.72))
+(HJ (n raj2) (ax -20.12))
+(HJ (n raj3) (ax -0.01))
+(HJ (n raj4) (ax 40.04))
+(HJ (n laj1) (ax 64.37))
+(HJ (n laj2) (ax 19.96))
+(HJ (n laj3) (ax 0.09))
+(HJ (n laj4) (ax -40.11))
+(HJ (n rlj1) (ax -0.06))
+(HJ (n rlj2) (ax 20.31))
+(HJ (n rlj3) (ax -39.24))
+(HJ (n rlj4) (ax 20.02))
+(HJ (n rlj5) (ax 0.04))
+(FRP (n rf) (c 0.01 -0.01 -0.02) (f -0.21 0.21 19.77))
+(HJ (n rlj6) (ax 0.21))
+(HJ (n llj1) (ax -0.01))
+(HJ (n llj2) (ax 0.00))
+(HJ (n llj3) (ax 19.70))
+(HJ (n llj4) (ax -41.02))
+(HJ (n llj5) (ax 20.31))
+(FRP (n lf) (c 0.01 -0.01 -0.02) (f -0.21 0.20 25.45))
+(HJ (n llj6) (ax -0.16))
+</code></pre><p><strong>这些数据一定准确吗？</strong>
+所有的通过传感器检测到的数据都被随机加上了噪声（随机微小变动），模拟真实世界中存在的误差</p>
+<h1 id="五上手代码调试打包运行">五、上手代码&amp;调试打包运行</h1>
+<h2 id="1使用intellij-idea来打开项目">1.使用intellij IDEA来打开项目</h2>
+<h2 id="2在windows上调试代码">2.在windows上调试代码</h2>
+<h2 id="3打包代码到linux运行">3.打包代码到linux运行</h2>
+<h2 id="4roboviz的使用">4.RoboViz的使用</h2>
+<h3 id="1连接球场">(1)连接球场</h3>
+<h3 id="2修改配置">(2)修改配置</h3>
+<h3 id="3录制log">(3)录制log</h3>
+<h3 id="4播放log">(4)播放log</h3>
+<h1 id="六代码结构简单介绍">六、代码结构简单介绍</h1>
+<h2 id="1bug修复">1.bug修复</h2>
+<p>以右脚为准，一般是右脚踢球，左脚支撑
+在讲代码之前，先把底层的一个bug修复一下</p>
+<p>文件位置：<code>src/main/java/magma/agent/decision/behavior/movement/MovementSingle.java</code>
+加上<code>||newName.contains(&quot;ShoulderYaw&quot;)||newName.contains(&quot;ArmYaw&quot;)</code></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2024/png/40792520/1705652878740-b38bd81b-6e52-4a82-93ed-41d9b3a310f0.png#averageHue=%23202226&amp;clientId=ufb904bf2-4a99-4&amp;from=paste&amp;height=687&amp;id=u3c535bf9&amp;originHeight=859&amp;originWidth=1081&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=106499&amp;status=done&amp;style=none&amp;taskId=ub54550ca-7a20-4712-86af-23de125f92c&amp;title=&amp;width=864.8" alt="e28c0484c03def5e65d38b55bf715715.png">
+<img src="https://cdn.nlark.com/yuque/0/2024/png/40792520/1705653010852-b4d03b4e-8496-4ea7-a070-c8707e92dbd4.png#averageHue=%23202226&amp;clientId=ufb904bf2-4a99-4&amp;from=paste&amp;height=730&amp;id=u7a607f74&amp;originHeight=913&amp;originWidth=1209&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=120291&amp;status=done&amp;style=none&amp;taskId=u1dbfd1f4-fa20-4802-b6a9-411aa333fc8&amp;title=&amp;width=967.2" alt="1937d6c4e31a5eb8922facef39ba5aac.png"></p>
+<h2 id="2程序结构简介">2.程序结构简介</h2>
+<p><img src="https://cdn.nlark.com/yuque/0/2024/jpeg/40792520/1705857273032-5c18036d-adfe-4111-a884-44695653baf7.jpeg#averageHue=%23fcfcfc&amp;clientId=u1be1700c-f870-4&amp;from=paste&amp;height=309&amp;id=ue9cd0110&amp;originHeight=292&amp;originWidth=329&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=30490&amp;status=done&amp;style=none&amp;taskId=ub51e8313-8c82-4cfa-bc98-3694c56914f&amp;title=&amp;width=348.20001220703125" alt="Architecture_Firstlevel.jpg">
+<img src="https://cdn.nlark.com/yuque/0/2024/png/40792520/1705857279261-cca0f45b-b4ce-463e-934b-273f5ab0fa7e.png#averageHue=%23fbeee0&amp;clientId=u1be1700c-f870-4&amp;from=paste&amp;height=775&amp;id=u5377f81a&amp;originHeight=819&amp;originWidth=717&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=55173&amp;status=done&amp;style=none&amp;taskId=u9bf336ec-3767-4e50-b3a0-3901a715341&amp;title=&amp;width=678.6000366210938" alt="image.png"></p>
+<h2 id="3包agent代码分析">3.包<code>agent</code>代码分析</h2>
+<h2 id="4包robots代码分析">4.包<code>robots</code>代码分析</h2>
+<h1 id="七步态参数调整方法">七、步态参数调整方法</h1>
+<h2 id="1参数在何处调整">1.参数在何处调整？</h2>
+<h2 id="2简单调整参数">2.简单调整参数</h2>
+<h2 id="3多级变速行走思想">3.多级变速行走思想</h2>
+<h1 id="八踢球动作设计方法">八、踢球动作设计方法</h1>
+<h2 id="1稳定踢球">1.稳定踢球</h2>
+<h3 id="1什么是稳定踢球">(1)什么是稳定踢球？</h3>
+<h3 id="2代码在何处">(2)代码在何处？</h3>
+<h3 id="3增加一种稳定踢球技能">(3)增加一种稳定踢球技能</h3>
+<h3 id="4动手编辑动作帧">(4)动手编辑动作帧</h3>
+<h3 id="5军火展示">(5)军火展示</h3>
+<h2 id="2边走边踢">2.边走边踢</h2>
+<h3 id="1什么是kickwalk">(1)什么是kickWalk？</h3>
+<h3 id="2代码在何处-1">(2)代码在何处？</h3>
+<h3 id="3增加一种动态踢球技能">(3)增加一种动态踢球技能</h3>
+<h3 id="4kickwalk参数列表每个参数的含义">(4)kickWalk参数列表每个参数的含义</h3>
+<h3 id="5动手编辑动作帧">(5)动手编辑动作帧</h3>
+<h3 id="6没有军火">(6)没有军火</h3>
+<h1 id="九使用机器学习优化步态参数和踢球动作">九、使用机器学习优化步态参数和踢球动作</h1>
+<h2 id="1传统cma-es算法简单介绍">1.传统CMA-ES算法简单介绍</h2>
+<p>基于协方差矩阵的自适应进化算法
+给定一个初始向量（数组），然后以此为基础进行随机的变化，产生很多个新的向量，在对新产生的向量进行求适应度，适应度越高，就被保留，适应度低的被丢弃</p>
+<h2 id="2如何将cma-es应用于参数优化">2.如何将CMA-ES应用于参数优化</h2>
+<h2 id="3步态参数优化流程">3.步态参数优化流程</h2>
+<h2 id="4踢球动作优化流程">4.踢球动作优化流程</h2>
+<h2 id="5优化时关于球场的自动化操作命令">5.优化时关于球场的自动化操作命令</h2>
+<p>请看gitlab：<a href="https://gitlab.com/robocup-sim/SimSpark/-/wikis/Network-Protocol">SimSparkWiki——网络协议</a></p>
+<h3 id="1自动开球">(1)自动开球</h3>
+<h3 id="2移动球球员的位置">(2)移动球、球员的位置</h3>
+<h3 id="3重置游戏时间">(3)重置游戏时间</h3>
+<h3 id="4结束踢球">(4)结束踢球</h3>
+<h1 id="十2024优化方向和方法">十、2024优化方向和方法</h1>
+<p>magmaOffenburg2021的论文
+<a href="https://www.yuque.com/attachments/yuque/0/2024/pdf/40792520/1705859534612-aaa288a7-5f97-4ae0-8b17-463222b5e166.pdf?_lake_card=%7B%22src%22%3A%22https%3A%2F%2Fwww.yuque.com%2Fattachments%2Fyuque%2F0%2F2024%2Fpdf%2F40792520%2F1705859534612-aaa288a7-5f97-4ae0-8b17-463222b5e166.pdf%22%2C%22name%22%3A%222021ICARSCWithCopyright(%E9%80%9A%E8%BF%87%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%AF%B9%E8%B8%A2%E7%90%83%E5%8A%A8%E4%BD%9C%2C%E5%8F%82%E6%95%B0%E7%9A%84%E6%94%B9%E8%BF%9B%E4%B8%8E%E5%88%9B%E6%96%B0).pdf%22%2C%22size%22%3A2101306%2C%22ext%22%3A%22pdf%22%2C%22source%22%3A%22%22%2C%22status%22%3A%22done%22%2C%22download%22%3Atrue%2C%22taskId%22%3A%22u3cce6f9a-cb51-49c6-a8c9-36045fbe3ba%22%2C%22taskType%22%3A%22upload%22%2C%22type%22%3A%22application%2Fpdf%22%2C%22__spacing%22%3A%22both%22%2C%22mode%22%3A%22title%22%2C%22id%22%3A%22udc3fe989%22%2C%22margin%22%3A%7B%22top%22%3Atrue%2C%22bottom%22%3Atrue%7D%2C%22card%22%3A%22file%22%7D">2021ICARSCWithCopyright(通过深度学习对踢球动作,参数的改进与创新).pdf</a><a href="https://www.yuque.com/attachments/yuque/0/2024/pdf/40792520/1705859534482-bd3d68e8-750a-47b7-8e89-c3c19d1b7d51.pdf?_lake_card=%7B%22src%22%3A%22https%3A%2F%2Fwww.yuque.com%2Fattachments%2Fyuque%2F0%2F2024%2Fpdf%2F40792520%2F1705859534482-bd3d68e8-750a-47b7-8e89-c3c19d1b7d51.pdf%22%2C%22name%22%3A%22%E4%B8%AD%E6%96%872021ICARSCWithCopyright(%E9%80%9A%E8%BF%87%E6%B7%B1%20%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%AF%B9%E8%B8%A2%E7%90%83%E5%8A%A8%E4%BD%9C%2C%E5%8F%82%E6%95%B0%E7%9A%84%E6%94%B9%E8%BF%9B%E4%B8%8E%E5%88%9B%E6%96%B0)%E3%80%90%E8%AF%91%E6%96%87_%E8%8B%B1%E8%AF%91%E4%B8%AD%E3%80%91.pdf%22%2C%22size%22%3A1822582%2C%22ext%22%3A%22pdf%22%2C%22source%22%3A%22%22%2C%22status%22%3A%22done%22%2C%22download%22%3Atrue%2C%22taskId%22%3A%22ubc52717e-8fb5-484a-be44-8d1f3c322de%22%2C%22taskType%22%3A%22upload%22%2C%22type%22%3A%22application%2Fpdf%22%2C%22__spacing%22%3A%22both%22%2C%22mode%22%3A%22title%22%2C%22id%22%3A%22u02f6b842%22%2C%22margin%22%3A%7B%22top%22%3Atrue%2C%22bottom%22%3Atrue%7D%2C%22card%22%3A%22file%22%7D">中文2021ICARSCWithCopyright(通过深 度学习对踢球动作,参数的改进与创新)【译文_英译中】.pdf</a></p>
+<p>magmaOffenburg2023的论文
+<a href="https://www.yuque.com/attachments/yuque/0/2024/pdf/40792520/1705899951332-1025dbbf-6256-45f2-b521-90458afd612c.pdf?_lake_card=%7B%22src%22%3A%22https%3A%2F%2Fwww.yuque.com%2Fattachments%2Fyuque%2F0%2F2024%2Fpdf%2F40792520%2F1705899951332-1025dbbf-6256-45f2-b521-90458afd612c.pdf%22%2C%22name%22%3A%22Double_Deep_Reinforcement_Learning.pdf%22%2C%22size%22%3A6252253%2C%22ext%22%3A%22pdf%22%2C%22source%22%3A%22%22%2C%22status%22%3A%22done%22%2C%22download%22%3Atrue%2C%22taskId%22%3A%22u7d6acc56-3413-4eb1-8502-e08dfa7afd9%22%2C%22taskType%22%3A%22upload%22%2C%22type%22%3A%22application%2Fpdf%22%2C%22__spacing%22%3A%22both%22%2C%22mode%22%3A%22title%22%2C%22id%22%3A%22u32c59b6b%22%2C%22margin%22%3A%7B%22top%22%3Atrue%2C%22bottom%22%3Atrue%7D%2C%22card%22%3A%22file%22%7D">Double_Deep_Reinforcement_Learning.pdf</a><a href="https://www.yuque.com/attachments/yuque/0/2024/pdf/40792520/1705899949043-4693e2f7-4e30-4bbd-a2eb-74fcf01e9c2c.pdf?_lake_card=%7B%22src%22%3A%22https%3A%2F%2Fwww.yuque.com%2Fattachments%2Fyuque%2F0%2F2024%2Fpdf%2F40792520%2F1705899949043-4693e2f7-4e30-4bbd-a2eb-74fcf01e9c2c.pdf%22%2C%22name%22%3A%22%E5%B7%B2%E7%BF%BB%E8%AF%91_Double_Deep_Reinforcement_Learning.pdf%22%2C%22size%22%3A465544%2C%22ext%22%3A%22pdf%22%2C%22source%22%3A%22%22%2C%22status%22%3A%22done%22%2C%22download%22%3Atrue%2C%22taskId%22%3A%22u8ca50c58-cab3-478c-ac33-d48caeedf35%22%2C%22taskType%22%3A%22upload%22%2C%22type%22%3A%22application%2Fpdf%22%2C%22__spacing%22%3A%22both%22%2C%22mode%22%3A%22title%22%2C%22id%22%3A%22uf8774e4c%22%2C%22margin%22%3A%7B%22top%22%3Atrue%2C%22bottom%22%3Atrue%7D%2C%22card%22%3A%22file%22%7D">已翻译_Double_Deep_Reinforcement_Learning.pdf</a></p>
+<p><strong>PPO</strong>优化代码，未探索的领域，等待大家去研究
+github：<a href="https://github.com/nico-bohlinger/RL-X">https://github.com/nico-bohlinger/RL-X</a></p>
+
+    </div>
+    <div class="post-footer">
+      
+    </div>
+  </article>
+
+    </main>
+  </body>
+</html>

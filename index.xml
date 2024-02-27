@@ -9,11 +9,74 @@
     <lastBuildDate>Tue, 27 Feb 2024 22:59:31 +0800</lastBuildDate>
     <atom:link href="https://tansor1.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>docker部署Maddy Mail Server实现自建邮箱服务器</title>
+      <link>https://tansor1.github.io/post/docker/docker%E9%83%A8%E7%BD%B2maddy-mail-server%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%BB%BA%E9%82%AE%E7%AE%B1%E6%9C%8D%E5%8A%A1%E5%99%A8/</link>
+      <pubDate>Tue, 27 Feb 2024 22:59:31 +0800</pubDate>
+      <guid>https://tansor1.github.io/post/docker/docker%E9%83%A8%E7%BD%B2maddy-mail-server%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%BB%BA%E9%82%AE%E7%AE%B1%E6%9C%8D%E5%8A%A1%E5%99%A8/</guid>
+      <description>docker部署Maddy Mail Server实现自建邮箱服务器 材料准备 顶级域名一个 域名对应的证书 安装有docker环境的服务器（此处使用1panel便于管理docker环境） 安装1panel 官方安装教程 在线安装 - 1Panel 文档&#xA;首先使用ssh连接服务器&#xA;我这里用的是Ubuntu，所以选Ubuntu选项卡，复制对应安装命令到终端执行&#xA;curl -sSL https://resource.fit2cloud.com/1panel/package/quick_start.sh -o quick_start.sh &amp;amp;&amp;amp; sudo bash quick_start.sh 按照提示设置端口、用户名和密码，然后按照提示访问1panel面板&#xA;用户名和密码填写刚才自己设定的用户名和密码，进入控制面板主页&#xA;获取域名证书 [notes/web/如何获取Let‘s Encrypt SSL泛型域名证书.md at main · tansor1/notes (github.com)](https://github.com/tansor1/notes/blob/main/web/如何获取Let‘s Encrypt SSL泛型域名证书.md)&#xA;私钥和证书以文件形式保留，分别为&#xA;fullchain.pem (证书) privkey.pem (私钥) 配置镜像加速（可选） 温馨提示：如果是中国大陆的服务器，可以先到应用商店--已安装页面快速跳转完成配置docker镜像加速&#xA;docker安装Maddy Mail Server 首先在ssh登录服务器的终端执行如下命令&#xA;docker volume create maddydata 到应用商店--全部页面搜索 maddy ，点击 安装&#xA;修改mail.example.com为你自己的带mail前缀的子域名，比如你的域名是123.top，那么此处填写mail.123.top,同时勾选端口外部访问&#xA;上传域名证书 在ssh登录服务器的终端依次执行以下命令&#xA;# 进入存储卷路径 cd $(docker volume inspect maddydata --format &amp;#39;{{.Mountpoint}}&amp;#39;) # 创建证书文件夹 mkdir -p tls 在管理面板的主机--文件页面，找到/var/lib/docker/volumes/maddydata/_data/tls目录，上传你的证书和私钥文件</description>
+    </item>
+    <item>
+      <title>docker部署rustdesk私有服务器</title>
+      <link>https://tansor1.github.io/post/docker/%E4%BD%BF%E7%94%A8docker%E6%8B%89%E5%8F%96%E6%9C%8D%E5%8A%A1%E7%AB%AF%E9%95%9C%E5%83%8F%E5%B9%B6%E8%BF%90%E8%A1%8C/</link>
+      <pubDate>Tue, 27 Feb 2024 22:59:31 +0800</pubDate>
+      <guid>https://tansor1.github.io/post/docker/%E4%BD%BF%E7%94%A8docker%E6%8B%89%E5%8F%96%E6%9C%8D%E5%8A%A1%E7%AB%AF%E9%95%9C%E5%83%8F%E5%B9%B6%E8%BF%90%E8%A1%8C/</guid>
+      <description>docker部署rustdesk私有服务器 使用docker拉取服务端镜像并运行 docker run --restart always \ --privileged \ -p 9000:9000 \ -p 21114:21114 \ -p 21115:21115 \ -p 21116:21116 \ -p 21116:21116/udp \ -p 21117:21117 \ -p 21118:21118 \ -p 21119:21119 \ -e KEY=你的key \ -e ENABLE_WEB_CLIENT=true --name rustdeskserver -d \ chengxudong2020/rustdeskserver:latest 其中KEY修改为自己想要的值，并且记住这个值 使用桌面客户端远程控制 安装rustdesk客户端 rustdesk-release 设置中继服务器&#xA;然后输入目标计算机的ID以及密码就可以实现远程控制&#xA;使用网页客户端远程控制 访问链接http://服务器ip:9000 进入网页客户端&#xA;此处ID服务器和KEY像前面的桌面客户端一样的填写内容&#xA;然后输入目标计算机的ID以及密码就可以实现远程控制</description>
+    </item>
+    <item>
+      <title>DreamWing3D寒假第一次培训</title>
+      <link>https://tansor1.github.io/post/ss3d/dreamwing3d%E5%AF%92%E5%81%87%E5%9F%B9%E8%AE%AD/</link>
+      <pubDate>Tue, 27 Feb 2024 22:59:31 +0800</pubDate>
+      <guid>https://tansor1.github.io/post/ss3d/dreamwing3d%E5%AF%92%E5%81%87%E5%9F%B9%E8%AE%AD/</guid>
+      <description>DreamWing3D寒假第一次培训 一、RoboCup3D中常用Linux命令 rcssserver3d: 启动球场 pkill rcsss -9: 关闭球场 ​&#x9;用法：pkill [选项] 进程名 ​&#x9;选项：-9：强制杀死进程。 ​&#x9;示例：pkill rcssserver3d -9&#xA;ls: 列出目录中的文件和子目录。 ​&#x9;用法：ls [选项] [文件/目录] ​&#x9;选项： ​&#x9;-l：以长格式显示文件和目录的详细信息。 ​&#x9;-a：显示所有文件和目录，包括隐藏文件。 ​&#x9;-h：以人类可读的格式显示文件大小。 ​&#x9;示例：ls -l /path/to/directory&#xA;cd: 更改当前工作目录。 ​&#x9;用法：cd [目录] ​&#x9;示例：cd /path/to/directory&#xA;pwd: 显示当前工作目录的路径。 ​&#x9;用法：pwd ​&#x9;示例：pwd&#xA;mkdir: 创建一个新的目录。 ​&#x9;用法：mkdir [选项] 目录 ​&#x9;选项：-p：递归地创建目录，如果父级目录不存在，则创建它们。 ​&#x9;示例：mkdir /path/to/new_directory&#xA;rm: 删除文件或目录。 ​&#x9;用法：rm [选项] 文件/目录 ​&#x9;选项： ​&#x9;-r：递归地删除目录和其中的文件。 ​&#x9;-f：强制删除，不提示确认。 ​&#x9;示例：rm -r /path/to/file_or_directory</description>
+    </item>
+    <item>
       <title>First</title>
       <link>https://tansor1.github.io/post/first/</link>
       <pubDate>Tue, 27 Feb 2024 22:59:31 +0800</pubDate>
       <guid>https://tansor1.github.io/post/first/</guid>
       <description></description>
+    </item>
+    <item>
+      <title>Ubuntu22初始化并挂载硬盘</title>
+      <link>https://tansor1.github.io/post/linux/ubuntu22%E5%88%9D%E5%A7%8B%E5%8C%96%E5%B9%B6%E6%8C%82%E8%BD%BD%E7%A1%AC%E7%9B%98/</link>
+      <pubDate>Tue, 27 Feb 2024 22:59:31 +0800</pubDate>
+      <guid>https://tansor1.github.io/post/linux/ubuntu22%E5%88%9D%E5%A7%8B%E5%8C%96%E5%B9%B6%E6%8C%82%E8%BD%BD%E7%A1%AC%E7%9B%98/</guid>
+      <description>Ubuntu22初始化并挂载硬盘 查看磁盘信息&#xA;sudo fdisk -l&#xA;找到要挂载的硬盘名称，此处是 /dev/vdb ，然后使用一下命令进行分区 sudo parted /dev/vdb 接着输入p可以查看分区结果，按q可以退出&#xA;再次查看磁盘信息sudo fdisk -l，默认生成dev/vdb1 挂载硬盘 创建一个目录用于挂在硬盘sudo mkdir /mnt/disk2 （一般挂载在mnt目录下，也可以是别的地方，反正此处挂在目录和后面的要对应上）&#xA;赋予权限sudo chmod -R 777 /mnt/disk2&#xA;临时手动挂载sudo mount /dev/vdb1 /mnt/disk2 (此处/dev/vdb1改成你自己的分区名称)&#xA;如果想开机后磁盘自动挂载，按如下操作&#xA;修改文件sudo vim /etc/fstab&#xA;添加行/dev/vdb1 /mnt/disk2 ext4 defaults 0 0 (此处/dev/vdb1参考前面的手动挂载方式)</description>
+    </item>
+    <item>
+      <title>Ubuntu22设置交换空间文件</title>
+      <link>https://tansor1.github.io/post/linux/ubuntu22%E8%AE%BE%E7%BD%AE%E4%BA%A4%E6%8D%A2%E7%A9%BA%E9%97%B4%E6%96%87%E4%BB%B6/</link>
+      <pubDate>Tue, 27 Feb 2024 22:59:31 +0800</pubDate>
+      <guid>https://tansor1.github.io/post/linux/ubuntu22%E8%AE%BE%E7%BD%AE%E4%BA%A4%E6%8D%A2%E7%A9%BA%E9%97%B4%E6%96%87%E4%BB%B6/</guid>
+      <description>Ubuntu22设置交换空间文件 增加交换空间 检查当前的交换空间情况 sudo swapon --show 创建一个交换空间的文件 sudo fallocate -l 2G /swapfile # 注：/swapfile指的是交换文件的路径文件名，可以自己定义，但要与后面的保持一致 # 2G指的是空间大小，自定义 设置文件权限 sudo chmod 600 /swapfile # 此处文件名与前面的保持一致 格式化交换文件 sudo mkswap /swapfile # 此处文件名与前面的保持一致 启用交换空间 sudo swapon /swapfile # 此处文件名与前面的保持一致 更新 /etc/fstab 文件，使用vim编辑此文件，在末尾增加一行，此处/swapfilea依然要与前面保持一致 /swapfile none swap sw 0 0 删除交换空间 更新 /etc/fstab 文件，使用vim编辑此文件，删掉你自己增加的那一行 关闭交换空间 sudo swapoff /swapfile # 此处文件名与前面的保持一致 删除交换文件 sudo rm /swapfile # 此处文件名与前面的保持一致 </description>
+    </item>
+    <item>
+      <title>修改Ubuntu的SSH默认端口</title>
+      <link>https://tansor1.github.io/post/linux/%E4%BF%AE%E6%94%B9ubuntu%E7%9A%84ssh%E9%BB%98%E8%AE%A4%E7%AB%AF%E5%8F%A3/</link>
+      <pubDate>Tue, 27 Feb 2024 22:59:31 +0800</pubDate>
+      <guid>https://tansor1.github.io/post/linux/%E4%BF%AE%E6%94%B9ubuntu%E7%9A%84ssh%E9%BB%98%E8%AE%A4%E7%AB%AF%E5%8F%A3/</guid>
+      <description>修改Ubuntu的SSH默认端口 首先进入/etc/ssh cd /etc/ssh 备份配置文件防止操作失误便于还原 cp sshd_config ./sshd_config_backup 编辑文件sshd_config sudo vim sshd_config 找到其中的某一行，形如（#Port 22，或Port 12345之类），加了#表示注释掉，默认用22端口 </description>
+    </item>
+    <item>
+      <title>如何获取Let‘s Encrypt SSL泛型域名证书</title>
+      <link>https://tansor1.github.io/post/web/%E5%A6%82%E4%BD%95%E8%8E%B7%E5%8F%96lets-encrypt-ssl%E6%B3%9B%E5%9E%8B%E5%9F%9F%E5%90%8D%E8%AF%81%E4%B9%A6/</link>
+      <pubDate>Tue, 27 Feb 2024 22:59:31 +0800</pubDate>
+      <guid>https://tansor1.github.io/post/web/%E5%A6%82%E4%BD%95%E8%8E%B7%E5%8F%96lets-encrypt-ssl%E6%B3%9B%E5%9E%8B%E5%9F%9F%E5%90%8D%E8%AF%81%E4%B9%A6/</guid>
+      <description>如何获取Let‘s Encrypt SSL泛型域名证书 以Ubuntu为例&#xA;首先安装certbot sudo apt install certbot&#xA;使用certbot获取证书 sudo certbot certonly -d *.example.com &amp;ndash;manual &amp;ndash;preferred-challenges dns&#xA;注：将*.example.com 替换为你的域名&#xA;根据提示输入邮箱并回车 输入Y回车 输入N回车 证明域名是你的 按照提示修改DNS解析，解析类型为TXT，值为给出的那一串码&#xA;回车确认，域名一般存在于/etc/letsencrypt/live/你的域名/目录下，其中privkey.pem是私钥文件，fullchain.pem是证书文件 </description>
+    </item>
+    <item>
+      <title>设置github走代理进行ssh推送</title>
+      <link>https://tansor1.github.io/post/git/%E8%AE%BE%E7%BD%AEgithub%E8%B5%B0%E4%BB%A3%E7%90%86%E8%BF%9B%E8%A1%8Cssh%E6%8E%A8%E9%80%81/</link>
+      <pubDate>Tue, 27 Feb 2024 22:59:31 +0800</pubDate>
+      <guid>https://tansor1.github.io/post/git/%E8%AE%BE%E7%BD%AEgithub%E8%B5%B0%E4%BB%A3%E7%90%86%E8%BF%9B%E8%A1%8Cssh%E6%8E%A8%E9%80%81/</guid>
+      <description>设置github走代理进行ssh推送 Windows 在C:\Users\用户名\.ssh目录下新增一个文件config，内容如下&#xA;Host github.com Hostname ssh.github.com User git Port 443 ProxyCommand &amp;#34;C:\Program Files\Git\mingw64\bin\connect.exe&amp;#34; -S 127.0.0.1:10808 %h %p 此处10808改为你的代理程序的本地端口&#xA;Linux 在~/.ssh/目录下新增一个文件config，内容如下&#xA;Host github.com Hostname ssh.github.com User git Port 443 ProxyCommand nc -v -x 127.0.0.1:10808 %h %p 此处10808改为你的代理程序的本地端口</description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://tansor1.github.io/post/readme/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tansor1.github.io/post/readme/</guid>
+      <description>Tansor&amp;rsquo;s notes.</description>
     </item>
   </channel>
 </rss>
