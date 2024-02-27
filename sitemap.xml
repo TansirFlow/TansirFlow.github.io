@@ -2,6 +2,9 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://tansor1.github.io/tags/docker/</loc>
+    <lastmod>2024-02-27T22:59:31+08:00</lastmod>
+  </url><url>
     <loc>https://tansor1.github.io/post/docker/docker%E9%83%A8%E7%BD%B2maddy-mail-server%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%BB%BA%E9%82%AE%E7%AE%B1%E6%9C%8D%E5%8A%A1%E5%99%A8/</loc>
     <lastmod>2024-02-27T22:59:31+08:00</lastmod>
   </url><url>
@@ -15,6 +18,9 @@
     <lastmod>2024-02-27T22:59:31+08:00</lastmod>
   </url><url>
     <loc>https://tansor1.github.io/post/</loc>
+    <lastmod>2024-02-27T22:59:31+08:00</lastmod>
+  </url><url>
+    <loc>https://tansor1.github.io/tags/</loc>
     <lastmod>2024-02-27T22:59:31+08:00</lastmod>
   </url><url>
     <loc>https://tansor1.github.io/</loc>
@@ -38,7 +44,5 @@
     <loc>https://tansor1.github.io/post/readme/</loc>
   </url><url>
     <loc>https://tansor1.github.io/categories/</loc>
-  </url><url>
-    <loc>https://tansor1.github.io/tags/</loc>
   </url>
 </urlset>
