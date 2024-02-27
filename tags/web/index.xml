@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Web on Tansor&#39;s Blog</title>
+    <link>https://tansor1.github.io/tags/web/</link>
+    <description>Recent content in Web on Tansor&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 27 Feb 2024 22:59:31 +0800</lastBuildDate>
+    <atom:link href="https://tansor1.github.io/tags/web/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>如何获取Let‘s Encrypt SSL泛型域名证书</title>
+      <link>https://tansor1.github.io/post/web/%E5%A6%82%E4%BD%95%E8%8E%B7%E5%8F%96lets-encrypt-ssl%E6%B3%9B%E5%9E%8B%E5%9F%9F%E5%90%8D%E8%AF%81%E4%B9%A6/</link>
+      <pubDate>Tue, 27 Feb 2024 22:59:31 +0800</pubDate>
+      <guid>https://tansor1.github.io/post/web/%E5%A6%82%E4%BD%95%E8%8E%B7%E5%8F%96lets-encrypt-ssl%E6%B3%9B%E5%9E%8B%E5%9F%9F%E5%90%8D%E8%AF%81%E4%B9%A6/</guid>
+      <description>如何获取Let‘s Encrypt SSL泛型域名证书 以Ubuntu为例&#xA;首先安装certbot sudo apt install certbot&#xA;使用certbot获取证书 sudo certbot certonly -d *.example.com &amp;ndash;manual &amp;ndash;preferred-challenges dns&#xA;注：将*.example.com 替换为你的域名&#xA;根据提示输入邮箱并回车 输入Y回车 输入N回车 证明域名是你的 按照提示修改DNS解析，解析类型为TXT，值为给出的那一串码&#xA;回车确认，域名一般存在于/etc/letsencrypt/live/你的域名/目录下，其中privkey.pem是私钥文件，fullchain.pem是证书文件 </description>
+    </item>
+  </channel>
+</rss>

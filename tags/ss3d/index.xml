@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>SS3D on Tansor&#39;s Blog</title>
+    <link>https://tansor1.github.io/tags/ss3d/</link>
+    <description>Recent content in SS3D on Tansor&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 27 Feb 2024 22:59:31 +0800</lastBuildDate>
+    <atom:link href="https://tansor1.github.io/tags/ss3d/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>DreamWing3D寒假第一次培训</title>
+      <link>https://tansor1.github.io/post/ss3d/dreamwing3d%E5%AF%92%E5%81%87%E5%9F%B9%E8%AE%AD/</link>
+      <pubDate>Tue, 27 Feb 2024 22:59:31 +0800</pubDate>
+      <guid>https://tansor1.github.io/post/ss3d/dreamwing3d%E5%AF%92%E5%81%87%E5%9F%B9%E8%AE%AD/</guid>
+      <description>DreamWing3D寒假第一次培训 一、RoboCup3D中常用Linux命令 rcssserver3d: 启动球场 pkill rcsss -9: 关闭球场 ​&#x9;用法：pkill [选项] 进程名 ​&#x9;选项：-9：强制杀死进程。 ​&#x9;示例：pkill rcssserver3d -9&#xA;ls: 列出目录中的文件和子目录。 ​&#x9;用法：ls [选项] [文件/目录] ​&#x9;选项： ​&#x9;-l：以长格式显示文件和目录的详细信息。 ​&#x9;-a：显示所有文件和目录，包括隐藏文件。 ​&#x9;-h：以人类可读的格式显示文件大小。 ​&#x9;示例：ls -l /path/to/directory&#xA;cd: 更改当前工作目录。 ​&#x9;用法：cd [目录] ​&#x9;示例：cd /path/to/directory&#xA;pwd: 显示当前工作目录的路径。 ​&#x9;用法：pwd ​&#x9;示例：pwd&#xA;mkdir: 创建一个新的目录。 ​&#x9;用法：mkdir [选项] 目录 ​&#x9;选项：-p：递归地创建目录，如果父级目录不存在，则创建它们。 ​&#x9;示例：mkdir /path/to/new_directory&#xA;rm: 删除文件或目录。 ​&#x9;用法：rm [选项] 文件/目录 ​&#x9;选项： ​&#x9;-r：递归地删除目录和其中的文件。 ​&#x9;-f：强制删除，不提示确认。 ​&#x9;示例：rm -r /path/to/file_or_directory</description>
+    </item>
+  </channel>
+</rss>

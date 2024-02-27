@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Git on Tansor&#39;s Blog</title>
+    <link>https://tansor1.github.io/tags/git/</link>
+    <description>Recent content in Git on Tansor&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 27 Feb 2024 22:59:31 +0800</lastBuildDate>
+    <atom:link href="https://tansor1.github.io/tags/git/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>设置github走代理进行ssh推送</title>
+      <link>https://tansor1.github.io/post/git/%E8%AE%BE%E7%BD%AEgithub%E8%B5%B0%E4%BB%A3%E7%90%86%E8%BF%9B%E8%A1%8Cssh%E6%8E%A8%E9%80%81/</link>
+      <pubDate>Tue, 27 Feb 2024 22:59:31 +0800</pubDate>
+      <guid>https://tansor1.github.io/post/git/%E8%AE%BE%E7%BD%AEgithub%E8%B5%B0%E4%BB%A3%E7%90%86%E8%BF%9B%E8%A1%8Cssh%E6%8E%A8%E9%80%81/</guid>
+      <description>设置github走代理进行ssh推送 Windows 在C:\Users\用户名\.ssh目录下新增一个文件config，内容如下&#xA;Host github.com Hostname ssh.github.com User git Port 443 ProxyCommand &amp;#34;C:\Program Files\Git\mingw64\bin\connect.exe&amp;#34; -S 127.0.0.1:10808 %h %p 此处10808改为你的代理程序的本地端口&#xA;Linux 在~/.ssh/目录下新增一个文件config，内容如下&#xA;Host github.com Hostname ssh.github.com User git Port 443 ProxyCommand nc -v -x 127.0.0.1:10808 %h %p 此处10808改为你的代理程序的本地端口</description>
+    </item>
+  </channel>
+</rss>

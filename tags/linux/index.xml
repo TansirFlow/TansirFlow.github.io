@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Linux on Tansor&#39;s Blog</title>
+    <link>https://tansor1.github.io/tags/linux/</link>
+    <description>Recent content in Linux on Tansor&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 27 Feb 2024 22:59:31 +0800</lastBuildDate>
+    <atom:link href="https://tansor1.github.io/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Ubuntu22初始化并挂载硬盘</title>
+      <link>https://tansor1.github.io/post/linux/ubuntu22%E5%88%9D%E5%A7%8B%E5%8C%96%E5%B9%B6%E6%8C%82%E8%BD%BD%E7%A1%AC%E7%9B%98/</link>
+      <pubDate>Tue, 27 Feb 2024 22:59:31 +0800</pubDate>
+      <guid>https://tansor1.github.io/post/linux/ubuntu22%E5%88%9D%E5%A7%8B%E5%8C%96%E5%B9%B6%E6%8C%82%E8%BD%BD%E7%A1%AC%E7%9B%98/</guid>
+      <description>Ubuntu22初始化并挂载硬盘 查看磁盘信息&#xA;sudo fdisk -l&#xA;找到要挂载的硬盘名称，此处是 /dev/vdb ，然后使用一下命令进行分区 sudo parted /dev/vdb 接着输入p可以查看分区结果，按q可以退出&#xA;再次查看磁盘信息sudo fdisk -l，默认生成dev/vdb1 挂载硬盘 创建一个目录用于挂在硬盘sudo mkdir /mnt/disk2 （一般挂载在mnt目录下，也可以是别的地方，反正此处挂在目录和后面的要对应上）&#xA;赋予权限sudo chmod -R 777 /mnt/disk2&#xA;临时手动挂载sudo mount /dev/vdb1 /mnt/disk2 (此处/dev/vdb1改成你自己的分区名称)&#xA;如果想开机后磁盘自动挂载，按如下操作&#xA;修改文件sudo vim /etc/fstab&#xA;添加行/dev/vdb1 /mnt/disk2 ext4 defaults 0 0 (此处/dev/vdb1参考前面的手动挂载方式)</description>
+    </item>
+    <item>
+      <title>Ubuntu22设置交换空间文件</title>
+      <link>https://tansor1.github.io/post/linux/ubuntu22%E8%AE%BE%E7%BD%AE%E4%BA%A4%E6%8D%A2%E7%A9%BA%E9%97%B4%E6%96%87%E4%BB%B6/</link>
+      <pubDate>Tue, 27 Feb 2024 22:59:31 +0800</pubDate>
+      <guid>https://tansor1.github.io/post/linux/ubuntu22%E8%AE%BE%E7%BD%AE%E4%BA%A4%E6%8D%A2%E7%A9%BA%E9%97%B4%E6%96%87%E4%BB%B6/</guid>
+      <description>Ubuntu22设置交换空间文件 增加交换空间 检查当前的交换空间情况 sudo swapon --show 创建一个交换空间的文件 sudo fallocate -l 2G /swapfile # 注：/swapfile指的是交换文件的路径文件名，可以自己定义，但要与后面的保持一致 # 2G指的是空间大小，自定义 设置文件权限 sudo chmod 600 /swapfile # 此处文件名与前面的保持一致 格式化交换文件 sudo mkswap /swapfile # 此处文件名与前面的保持一致 启用交换空间 sudo swapon /swapfile # 此处文件名与前面的保持一致 更新 /etc/fstab 文件，使用vim编辑此文件，在末尾增加一行，此处/swapfilea依然要与前面保持一致 /swapfile none swap sw 0 0 删除交换空间 更新 /etc/fstab 文件，使用vim编辑此文件，删掉你自己增加的那一行 关闭交换空间 sudo swapoff /swapfile # 此处文件名与前面的保持一致 删除交换文件 sudo rm /swapfile # 此处文件名与前面的保持一致 </description>
+    </item>
+    <item>
+      <title>修改Ubuntu的SSH默认端口</title>
+      <link>https://tansor1.github.io/post/linux/%E4%BF%AE%E6%94%B9ubuntu%E7%9A%84ssh%E9%BB%98%E8%AE%A4%E7%AB%AF%E5%8F%A3/</link>
+      <pubDate>Tue, 27 Feb 2024 22:59:31 +0800</pubDate>
+      <guid>https://tansor1.github.io/post/linux/%E4%BF%AE%E6%94%B9ubuntu%E7%9A%84ssh%E9%BB%98%E8%AE%A4%E7%AB%AF%E5%8F%A3/</guid>
+      <description>修改Ubuntu的SSH默认端口 首先进入/etc/ssh cd /etc/ssh 备份配置文件防止操作失误便于还原 cp sshd_config ./sshd_config_backup 编辑文件sshd_config sudo vim sshd_config 找到其中的某一行，形如（#Port 22，或Port 12345之类），加了#表示注释掉，默认用22端口 </description>
+    </item>
+  </channel>
+</rss>
