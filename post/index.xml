@@ -64,12 +64,5 @@
       <guid>https://tansor1.github.io/post/git/%E8%AE%BE%E7%BD%AEgithub%E8%B5%B0%E4%BB%A3%E7%90%86%E8%BF%9B%E8%A1%8Cssh%E6%8E%A8%E9%80%81/</guid>
       <description>设置github走代理进行ssh推送 Windows 在C:\Users\用户名\.ssh目录下新增一个文件config，内容如下&#xA;Host github.com Hostname ssh.github.com User git Port 443 ProxyCommand &amp;#34;C:\Program Files\Git\mingw64\bin\connect.exe&amp;#34; -S 127.0.0.1:10808 %h %p 此处10808改为你的代理程序的本地端口&#xA;Linux 在~/.ssh/目录下新增一个文件config，内容如下&#xA;Host github.com Hostname ssh.github.com User git Port 443 ProxyCommand nc -v -x 127.0.0.1:10808 %h %p 此处10808改为你的代理程序的本地端口</description>
     </item>
-    <item>
-      <title></title>
-      <link>https://tansor1.github.io/post/readme/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://tansor1.github.io/post/readme/</guid>
-      <description>Tansor&amp;rsquo;s notes.</description>
-    </item>
   </channel>
 </rss>
