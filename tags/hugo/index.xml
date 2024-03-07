@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Hugo on Tansor&#39;s Blog</title>
+    <link>https://tansor1.github.io/tags/hugo/</link>
+    <description>Recent content in Hugo on Tansor&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 07 Mar 2024 22:21:51 +0800</lastBuildDate>
+    <atom:link href="https://tansor1.github.io/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>hugo的使用</title>
+      <link>https://tansor1.github.io/post/use_hugo/</link>
+      <pubDate>Thu, 07 Mar 2024 22:21:51 +0800</pubDate>
+      <guid>https://tansor1.github.io/post/use_hugo/</guid>
+      <description>新建文章 hugo content/post/demo.md 增加标签 在新建文档的头部双线内增加tags=[&#39;标签分类名&#39;]&#xA;生成静态页面博客 hugo --theme=m10c --baseURL=&amp;#34;https://tansor1.github.io/&amp;#34; -D </description>
+    </item>
+  </channel>
+</rss>

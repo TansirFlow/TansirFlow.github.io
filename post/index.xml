@@ -6,8 +6,22 @@
     <description>Recent content in Posts on Tansor&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 27 Feb 2024 22:59:31 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 07 Mar 2024 22:21:51 +0800</lastBuildDate>
     <atom:link href="https://tansor1.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>hugo的使用</title>
+      <link>https://tansor1.github.io/post/use_hugo/</link>
+      <pubDate>Thu, 07 Mar 2024 22:21:51 +0800</pubDate>
+      <guid>https://tansor1.github.io/post/use_hugo/</guid>
+      <description>新建文章 hugo content/post/demo.md 增加标签 在新建文档的头部双线内增加tags=[&#39;标签分类名&#39;]&#xA;生成静态页面博客 hugo --theme=m10c --baseURL=&amp;#34;https://tansor1.github.io/&amp;#34; -D </description>
+    </item>
+    <item>
+      <title>Spring</title>
+      <link>https://tansor1.github.io/post/ssm/spring/</link>
+      <pubDate>Thu, 07 Mar 2024 22:20:23 +0800</pubDate>
+      <guid>https://tansor1.github.io/post/ssm/spring/</guid>
+      <description>spring框架 BeanFactorty版本的快速入门 导入spring坐标&#xA;&amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;org.springframework&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;spring-context&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;5.3.7&amp;lt;/version&amp;gt; &amp;lt;/dependency&amp;gt; 通过测试类获取Bean(IoC) test类&#xA;package com.tansor.test; import com.tansor.service.UserService; import org.springframework.beans.factory.support.DefaultListableBeanFactory; import org.springframework.beans.factory.xml.XmlBeanDefinitionReader; public class BeanFactoryTest { public static void main(String[] args) { //创建工厂对象 DefaultListableBeanFactory beanFactory=new DefaultListableBeanFactory(); //创建读取器 XmlBeanDefinitionReader reader=new XmlBeanDefinitionReader(beanFactory); //读取器配置文件给工厂 reader.loadBeanDefinitions(&amp;#34;beans.xml&amp;#34;); //根据id获取Bean实例对象 UserService userService = (UserService) beanFactory.getBean(&amp;#34;userService&amp;#34;); //获取对象信息 System.out.println(userService); } } beans.xml&#xA;&amp;lt;?xml version=&amp;#34;1.0&amp;#34; encoding=&amp;#34;UTF-8&amp;#34;?&amp;gt; &amp;lt;beans xmlns=&amp;#34;http://www.springframework.org/schema/beans&amp;#34; xmlns:xsi=&amp;#34;http://www.w3.org/2001/XMLSchema-instance&amp;#34; xsi:schemaLocation=&amp;#34;http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd&amp;#34;&amp;gt; &amp;lt;bean id=&amp;#34;userService&amp;#34; class=&amp;#34;com.tansor.service.impl.UserServiceImpl&amp;#34;&amp;gt;&amp;lt;/bean&amp;gt; &amp;lt;!--id为bean识别信息，class为类的路径--&amp;gt; &amp;lt;/beans&amp;gt; Bean的注入(DI注入) 如下，UserService需要一个UserDao对象，故注入&#xA;package com.tansor.service.impl; import com.tansor.dao.UserDao; import com.tansor.service.UserService; public class UserServiceImpl implements UserService { public UserDao userDao; public void setUserDao(UserDao userDao){ this.</description>
+    </item>
     <item>
       <title>docker部署Maddy Mail Server实现自建邮箱服务器</title>
       <link>https://tansor1.github.io/post/docker/docker%E9%83%A8%E7%BD%B2maddy-mail-server%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%BB%BA%E9%82%AE%E7%AE%B1%E6%9C%8D%E5%8A%A1%E5%99%A8/</link>
