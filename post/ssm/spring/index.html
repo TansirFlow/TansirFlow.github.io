@@ -80,7 +80,7 @@ package com.tansor.service.impl; import com.tansor.dao.UserDao; import com.tanso
   <title>clock</title>
   <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
 </svg>
-          1 min read
+          2 min read
         </div>
         <div>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tag">
@@ -226,7 +226,121 @@ package com.tansor.service.impl; import com.tansor.dao.UserDao; import com.tanso
 </tr>
 </tbody>
 </table>
-
+<h3 id="beanname">BeanName</h3>
+<p>beanName有多种形成方式（绝大多数都只用id，name一辈子也用不到几次，白雪白雪）</p>
+<ol>
+<li>不写id，不写name，beanName为bean中类名的完整引用路径（例如com.tansor.userService.impl.UserServiceImpl）</li>
+<li>写id，不写name，beanName为bean标记中指定的id，此时不允许用完整引用路径去getBean</li>
+<li>写id，写name，beanName为bean标记中指定的id，但是可以通过id或者name去getBean（aliasMap别名映射，将别名映射到id，别名可以写多个，比如id=&ldquo;aaa,bbb,ccc&rdquo;）</li>
+<li>不写id，写name，此时beanName从name得到，如果只有一个name那就是name，如果有多个name那就是第一个name作为beanName</li>
+</ol>
+<h3 id="bean的作用范围scope配置">Bean的作用范围scope配置</h3>
+<h4 id="基础spring环境下bean的作用范围一般都是singleton">基础spring环境下Bean的作用范围（一般都是singleton）</h4>
+<ol>
+<li>
+<p>singleton</p>
+<p>单例，spring容器创建的时候就会进行实例化，存到单例池，每次getBean都是一样的</p>
+</li>
+<li>
+<p>prototype</p>
+<p>原型，只有getBean时才会创建Bean实例，每次都会创建一个新的实例，不会存进单例池</p>
+</li>
+</ol>
+<h4 id="spring-webmvc">spring-webmvc</h4>
+<p>多出来两种scope</p>
+<ol>
+<li>request</li>
+<li>session</li>
+</ol>
+<h3 id="bean延迟加载对beanfatory无效">Bean延迟加载（对BeanFatory无效）</h3>
+<p>lazy-init为true时等到你使用getBean才会创建Bean并存储到单例池，否则spring容器一创建就会创建它</p>
+<h3 id="init-method">init-method</h3>
+<p>该方法在对象实例化之后执行</p>
+<h3 id="destroy-method">destroy-method</h3>
+<p>必须显式的关闭才会调用，例如<code>applicationContext.close()</code></p>
+<h3 id="initializingbean">InitializingBean</h3>
+<p>使业务类实现<code>InitializingBean</code>接口，并实现<code>afterPropertiesSet()</code>方法</p>
+<p>实例化之后执行属性设置（DI注入），然后执行本方法，然后再执行<code>init-method</code></p>
+<h3 id="bean有参构造">Bean有参构造</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#75715e">&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;beans</span> <span style="color:#a6e22e">xmlns=</span><span style="color:#e6db74">&#34;http://www.springframework.org/schema/beans&#34;</span>
+</span></span><span style="display:flex;"><span>       <span style="color:#a6e22e">xmlns:xsi=</span><span style="color:#e6db74">&#34;http://www.w3.org/2001/XMLSchema-instance&#34;</span>
+</span></span><span style="display:flex;"><span>       <span style="color:#a6e22e">xsi:schemaLocation=</span><span style="color:#e6db74">&#34;http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;bean</span> <span style="color:#a6e22e">id=</span><span style="color:#e6db74">&#34;userService&#34;</span> <span style="color:#a6e22e">class=</span><span style="color:#e6db74">&#34;com.tansor.service.impl.UserServiceImpl&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;constructor-arg</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;userDao1&#34;</span> <span style="color:#a6e22e">value=</span><span style="color:#e6db74">&#34;userDao&#34;</span><span style="color:#f92672">&gt;&lt;/constructor-arg&gt;</span><span style="color:#75715e">&lt;!--UserService的构造函数的第一个参数，name是参数名，value对应参数值的bean的id--&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;constructor-arg</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;userDao2&#34;</span> <span style="color:#a6e22e">value=</span><span style="color:#e6db74">&#34;userDao&#34;</span><span style="color:#f92672">&gt;&lt;/constructor-arg&gt;</span><span style="color:#75715e">&lt;!--构造函数的第一个参数，要几个参数创建几个constructor-arg标签--&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;property</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;userDao&#34;</span> <span style="color:#a6e22e">ref=</span><span style="color:#e6db74">&#34;userDao&#34;</span><span style="color:#f92672">&gt;&lt;/property&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;/bean&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;bean</span> <span style="color:#a6e22e">id=</span><span style="color:#e6db74">&#34;userDao&#34;</span> <span style="color:#a6e22e">class=</span><span style="color:#e6db74">&#34;com.tansor.dao.impl.UserDaoImpl&#34;</span><span style="color:#f92672">&gt;&lt;/bean&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/beans&gt;</span>
+</span></span></code></pre></div><h3 id="静态工厂">静态工厂</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">package</span> com.tansor.factory;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> com.tansor.dao.UserDao;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> com.tansor.dao.impl.UserDaoImpl;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MyBeanFactory1</span> {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> UserDao <span style="color:#a6e22e">userDao</span>(){
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> UserDaoImpl();
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#75715e">&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;beans</span> <span style="color:#a6e22e">xmlns=</span><span style="color:#e6db74">&#34;http://www.springframework.org/schema/beans&#34;</span>
+</span></span><span style="display:flex;"><span>       <span style="color:#a6e22e">xmlns:xsi=</span><span style="color:#e6db74">&#34;http://www.w3.org/2001/XMLSchema-instance&#34;</span>
+</span></span><span style="display:flex;"><span>       <span style="color:#a6e22e">xsi:schemaLocation=</span><span style="color:#e6db74">&#34;http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;bean</span> <span style="color:#a6e22e">id=</span><span style="color:#e6db74">&#34;userService&#34;</span> <span style="color:#a6e22e">class=</span><span style="color:#e6db74">&#34;com.tansor.service.impl.UserServiceImpl&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;constructor-arg</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;userDao1&#34;</span> <span style="color:#a6e22e">value=</span><span style="color:#e6db74">&#34;userDao&#34;</span><span style="color:#f92672">&gt;&lt;/constructor-arg&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;constructor-arg</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;userDao2&#34;</span> <span style="color:#a6e22e">value=</span><span style="color:#e6db74">&#34;userDao&#34;</span><span style="color:#f92672">&gt;&lt;/constructor-arg&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;property</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;userDao&#34;</span> <span style="color:#a6e22e">ref=</span><span style="color:#e6db74">&#34;userDao&#34;</span><span style="color:#f92672">&gt;&lt;/property&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;/bean&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;bean</span> <span style="color:#a6e22e">id=</span><span style="color:#e6db74">&#34;userDao&#34;</span> <span style="color:#a6e22e">class=</span><span style="color:#e6db74">&#34;com.tansor.dao.impl.UserDaoImpl&#34;</span><span style="color:#f92672">&gt;&lt;/bean&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;bean</span> <span style="color:#a6e22e">id=</span><span style="color:#e6db74">&#34;userDao1&#34;</span> <span style="color:#a6e22e">class=</span><span style="color:#e6db74">&#34;com.tansor.factory.MyBeanFactory1&#34;</span> <span style="color:#a6e22e">factory-method=</span><span style="color:#e6db74">&#34;userDao&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">&lt;!--如果userDao()有参数就增加&lt;constructor-arg&gt;来增加参数--&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;/bean&gt;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">&lt;!--调用MyBeanFactory1中的方法userDao（factory-method）,然后把返回的对象实例作为userDao1--&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/beans&gt;</span>
+</span></span></code></pre></div><h3 id="实例工厂非静态工厂方式">实例工厂(非静态工厂方式)</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">package</span> com.tansor.factory;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> com.tansor.dao.UserDao;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> com.tansor.dao.impl.UserDaoImpl;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MyBeanFactory2</span> {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> UserDao <span style="color:#a6e22e">userDao</span>(){
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> UserDaoImpl();
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#75715e">&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;beans</span> <span style="color:#a6e22e">xmlns=</span><span style="color:#e6db74">&#34;http://www.springframework.org/schema/beans&#34;</span>
+</span></span><span style="display:flex;"><span>       <span style="color:#a6e22e">xmlns:xsi=</span><span style="color:#e6db74">&#34;http://www.w3.org/2001/XMLSchema-instance&#34;</span>
+</span></span><span style="display:flex;"><span>       <span style="color:#a6e22e">xsi:schemaLocation=</span><span style="color:#e6db74">&#34;http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;bean</span> <span style="color:#a6e22e">id=</span><span style="color:#e6db74">&#34;userService&#34;</span> <span style="color:#a6e22e">class=</span><span style="color:#e6db74">&#34;com.tansor.service.impl.UserServiceImpl&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;constructor-arg</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;userDao1&#34;</span> <span style="color:#a6e22e">value=</span><span style="color:#e6db74">&#34;userDao&#34;</span><span style="color:#f92672">&gt;&lt;/constructor-arg&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;constructor-arg</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;userDao2&#34;</span> <span style="color:#a6e22e">value=</span><span style="color:#e6db74">&#34;userDao&#34;</span><span style="color:#f92672">&gt;&lt;/constructor-arg&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;property</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;userDao&#34;</span> <span style="color:#a6e22e">ref=</span><span style="color:#e6db74">&#34;userDao&#34;</span><span style="color:#f92672">&gt;&lt;/property&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;/bean&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;bean</span> <span style="color:#a6e22e">id=</span><span style="color:#e6db74">&#34;userDao&#34;</span> <span style="color:#a6e22e">class=</span><span style="color:#e6db74">&#34;com.tansor.dao.impl.UserDaoImpl&#34;</span><span style="color:#f92672">&gt;&lt;/bean&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;bean</span> <span style="color:#a6e22e">id=</span><span style="color:#e6db74">&#34;beanFactory2&#34;</span> <span style="color:#a6e22e">class=</span><span style="color:#e6db74">&#34;com.tansor.factory.MyBeanFactory2&#34;</span><span style="color:#f92672">&gt;&lt;/bean&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">&lt;!--实例化一个bean--&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;bean</span> <span style="color:#a6e22e">id=</span><span style="color:#e6db74">&#34;userDao2&#34;</span> <span style="color:#a6e22e">factory-bean=</span><span style="color:#e6db74">&#34;beanFactory2&#34;</span> <span style="color:#a6e22e">factory-method=</span><span style="color:#e6db74">&#34;userDao&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>    	<span style="color:#75715e">&lt;!--如果userDao()有参数就增加&lt;constructor-arg&gt;来增加参数--&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;/bean&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">&lt;!--用刚才实例化的bean作为factory-bean，调用其中的userDao()，获取返回的UserDao作为MyBeanFactory2--&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/beans&gt;</span>
+</span></span></code></pre></div>
     </div>
     <div class="post-footer">
       
