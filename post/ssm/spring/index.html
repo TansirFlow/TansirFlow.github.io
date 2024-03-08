@@ -80,7 +80,7 @@ package com.tansor.service.impl; import com.tansor.dao.UserDao; import com.tanso
   <title>clock</title>
   <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
 </svg>
-          2 min read
+          3 min read
         </div>
         <div>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tag">
@@ -340,7 +340,169 @@ package com.tansor.service.impl; import com.tansor.dao.UserDao; import com.tanso
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;/bean&gt;</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">&lt;!--用刚才实例化的bean作为factory-bean，调用其中的userDao()，获取返回的UserDao作为MyBeanFactory2--&gt;</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/beans&gt;</span>
-</span></span></code></pre></div>
+</span></span></code></pre></div><h3 id="实现factorybean规范延迟bean实例化">实现FactoryBean规范延迟Bean实例化</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">package</span> com.tansor.factory;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> com.tansor.dao.UserDao;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> com.tansor.dao.impl.UserDaoImpl;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> org.springframework.beans.factory.FactoryBean;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MyBeanFactory3</span> <span style="color:#66d9ef">implements</span> FactoryBean<span style="color:#f92672">&lt;</span>UserDao<span style="color:#f92672">&gt;</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//继承FactoryBean</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> UserDao <span style="color:#a6e22e">getObject</span>() <span style="color:#66d9ef">throws</span> Exception {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> UserDaoImpl();
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> Class<span style="color:#f92672">&lt;?&gt;</span> getObjectType() {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> UserDao.<span style="color:#a6e22e">class</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#75715e">&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;beans</span> <span style="color:#a6e22e">xmlns=</span><span style="color:#e6db74">&#34;http://www.springframework.org/schema/beans&#34;</span>
+</span></span><span style="display:flex;"><span>       <span style="color:#a6e22e">xmlns:xsi=</span><span style="color:#e6db74">&#34;http://www.w3.org/2001/XMLSchema-instance&#34;</span>
+</span></span><span style="display:flex;"><span>       <span style="color:#a6e22e">xsi:schemaLocation=</span><span style="color:#e6db74">&#34;http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;bean</span> <span style="color:#a6e22e">id=</span><span style="color:#e6db74">&#34;userService&#34;</span> <span style="color:#a6e22e">class=</span><span style="color:#e6db74">&#34;com.tansor.service.impl.UserServiceImpl&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;constructor-arg</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;userDao1&#34;</span> <span style="color:#a6e22e">value=</span><span style="color:#e6db74">&#34;userDao&#34;</span><span style="color:#f92672">&gt;&lt;/constructor-arg&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;constructor-arg</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;userDao2&#34;</span> <span style="color:#a6e22e">value=</span><span style="color:#e6db74">&#34;userDao&#34;</span><span style="color:#f92672">&gt;&lt;/constructor-arg&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;property</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;userDao&#34;</span> <span style="color:#a6e22e">ref=</span><span style="color:#e6db74">&#34;userDao&#34;</span><span style="color:#f92672">&gt;&lt;/property&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;/bean&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;bean</span> <span style="color:#a6e22e">id=</span><span style="color:#e6db74">&#34;userDao&#34;</span> <span style="color:#a6e22e">class=</span><span style="color:#e6db74">&#34;com.tansor.dao.impl.UserDaoImpl&#34;</span><span style="color:#f92672">&gt;&lt;/bean&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;bean</span> <span style="color:#a6e22e">id=</span><span style="color:#e6db74">&#34;userDao3&#34;</span> <span style="color:#a6e22e">class=</span><span style="color:#e6db74">&#34;com.tansor.factory.MyBeanFactory3&#34;</span><span style="color:#f92672">&gt;&lt;/bean&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">&lt;!--返回的是MyBeanFactory3使用getObject()返回的对象实例--&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">&lt;!--单例池中userDao3对应的其实是MyBeanFactory3，只有当测试类中getBean被执行时，才会生成真正的返回的对象userDao3存储在factoryBeanObjectCache中--&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/beans&gt;</span>
+</span></span></code></pre></div><h3 id="注入方式和注入数据类型手动装配">注入方式和注入数据类型（手动装配）</h3>
+<h4 id="通过set方法注入">通过set方法注入</h4>
+<ul>
+<li>普通数据类型</li>
+</ul>
+<p>​		例如String ，int，boolean等</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#75715e">&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;beans</span> <span style="color:#a6e22e">xmlns=</span><span style="color:#e6db74">&#34;http://www.springframework.org/schema/beans&#34;</span>
+</span></span><span style="display:flex;"><span>       <span style="color:#a6e22e">xmlns:xsi=</span><span style="color:#e6db74">&#34;http://www.w3.org/2001/XMLSchema-instance&#34;</span>
+</span></span><span style="display:flex;"><span>       <span style="color:#a6e22e">xsi:schemaLocation=</span><span style="color:#e6db74">&#34;http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;bean</span> <span style="color:#a6e22e">id=</span><span style="color:#e6db74">&#34;userService&#34;</span> <span style="color:#a6e22e">class=</span><span style="color:#e6db74">&#34;com.tansor.service.impl.UserServiceImpl&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;property</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;userName&#34;</span> <span style="color:#a6e22e">ref=</span><span style="color:#e6db74">&#34;xiaoming&#34;</span><span style="color:#f92672">&gt;&lt;/property&gt;</span><span style="color:#75715e">&lt;!--普通属性值注入使用value，此时UserServiceImpl中有方法setUserName()--&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;/bean&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;bean</span> <span style="color:#a6e22e">id=</span><span style="color:#e6db74">&#34;userDao&#34;</span> <span style="color:#a6e22e">class=</span><span style="color:#e6db74">&#34;com.tansor.dao.impl.UserDaoImpl&#34;</span><span style="color:#f92672">&gt;&lt;/bean&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/beans&gt;</span>
+</span></span></code></pre></div><ul>
+<li>引用数据类型</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#75715e">&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;beans</span> <span style="color:#a6e22e">xmlns=</span><span style="color:#e6db74">&#34;http://www.springframework.org/schema/beans&#34;</span>
+</span></span><span style="display:flex;"><span>       <span style="color:#a6e22e">xmlns:xsi=</span><span style="color:#e6db74">&#34;http://www.w3.org/2001/XMLSchema-instance&#34;</span>
+</span></span><span style="display:flex;"><span>       <span style="color:#a6e22e">xsi:schemaLocation=</span><span style="color:#e6db74">&#34;http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;bean</span> <span style="color:#a6e22e">id=</span><span style="color:#e6db74">&#34;userService&#34;</span> <span style="color:#a6e22e">class=</span><span style="color:#e6db74">&#34;com.tansor.service.impl.UserServiceImpl&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;property</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;userDao&#34;</span> <span style="color:#a6e22e">ref=</span><span style="color:#e6db74">&#34;userDao&#34;</span><span style="color:#f92672">&gt;&lt;/property&gt;</span><span style="color:#75715e">&lt;!--引用注入使用ref，此时UserServiceImpl中有方法setUserDao()--&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;/bean&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;bean</span> <span style="color:#a6e22e">id=</span><span style="color:#e6db74">&#34;userDao&#34;</span> <span style="color:#a6e22e">class=</span><span style="color:#e6db74">&#34;com.tansor.dao.impl.UserDaoImpl&#34;</span><span style="color:#f92672">&gt;&lt;/bean&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/beans&gt;</span>
+</span></span></code></pre></div><ul>
+<li>集合数据类型</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#75715e">&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;beans</span> <span style="color:#a6e22e">xmlns=</span><span style="color:#e6db74">&#34;http://www.springframework.org/schema/beans&#34;</span>
+</span></span><span style="display:flex;"><span>       <span style="color:#a6e22e">xmlns:xsi=</span><span style="color:#e6db74">&#34;http://www.w3.org/2001/XMLSchema-instance&#34;</span>
+</span></span><span style="display:flex;"><span>       <span style="color:#a6e22e">xsi:schemaLocation=</span><span style="color:#e6db74">&#34;http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;bean</span> <span style="color:#a6e22e">id=</span><span style="color:#e6db74">&#34;userService&#34;</span> <span style="color:#a6e22e">class=</span><span style="color:#e6db74">&#34;com.tansor.service.impl.UserServiceImpl&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;property</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;stringList&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&lt;list&gt;</span><span style="color:#75715e">&lt;!--是List类型写List，是Set就写Set，是--&gt;</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&lt;value&gt;</span>aaa<span style="color:#f92672">&lt;/value&gt;</span><span style="color:#75715e">&lt;!--普通属性值直接往里写--&gt;</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&lt;value&gt;</span>bbb<span style="color:#f92672">&lt;/value&gt;</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&lt;value&gt;</span>ccc<span style="color:#f92672">&lt;/value&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&lt;/list&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;/property&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;property</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;userDaoList&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&lt;list&gt;</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&lt;ref</span> <span style="color:#a6e22e">bean=</span><span style="color:#e6db74">&#34;userDao1&#34;</span><span style="color:#f92672">&gt;&lt;/ref&gt;</span><span style="color:#75715e">&lt;!--引用外面的bean--&gt;</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&lt;ref</span> <span style="color:#a6e22e">bean=</span><span style="color:#e6db74">&#34;userDao2&#34;</span><span style="color:#f92672">&gt;&lt;/ref&gt;</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&lt;bean</span> <span style="color:#a6e22e">class=</span><span style="color:#e6db74">&#34;com.tansor.dao.impl.UserDaoImpl&#34;</span><span style="color:#f92672">&gt;&lt;/bean&gt;</span><span style="color:#75715e">&lt;!--也可以直接配一些bean--&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&lt;/list&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;/property&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;property</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;userDaoMap&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&lt;map&gt;</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&lt;entry</span> <span style="color:#a6e22e">key=</span><span style="color:#e6db74">&#34;key1&#34;</span> <span style="color:#a6e22e">value=</span><span style="color:#e6db74">&#34;value1&#34;</span><span style="color:#f92672">&gt;&lt;/entry&gt;</span><span style="color:#75715e">&lt;!--普通类型的变量注入直接key-value--&gt;</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&lt;entry</span> <span style="color:#a6e22e">key=</span><span style="color:#e6db74">&#34;key1&#34;</span> <span style="color:#a6e22e">value-ref=</span><span style="color:#e6db74">&#34;userDao1&#34;</span><span style="color:#f92672">&gt;&lt;/entry&gt;</span><span style="color:#75715e">&lt;!--引用对象实例的变量注入直接key-value-ref--&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&lt;/map&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;/property&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;property</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;userDaoMap&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&lt;props&gt;</span><span style="color:#75715e">&lt;!--Properties类型的注入--&gt;</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&lt;prop</span> <span style="color:#a6e22e">key=</span><span style="color:#e6db74">&#34;prop1&#34;</span><span style="color:#f92672">&gt;</span>value1在此<span style="color:#f92672">&lt;/prop&gt;</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&lt;prop</span> <span style="color:#a6e22e">key=</span><span style="color:#e6db74">&#34;prop2&#34;</span><span style="color:#f92672">&gt;</span>value2在此<span style="color:#f92672">&lt;/prop&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&lt;/props&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;/property&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;/bean&gt;</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;bean</span> <span style="color:#a6e22e">id=</span><span style="color:#e6db74">&#34;userDao1&#34;</span> <span style="color:#a6e22e">class=</span><span style="color:#e6db74">&#34;com.tansor.dao.impl.UserDaoImpl&#34;</span><span style="color:#f92672">&gt;&lt;/bean&gt;</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;bean</span> <span style="color:#a6e22e">id=</span><span style="color:#e6db74">&#34;userDao2&#34;</span> <span style="color:#a6e22e">class=</span><span style="color:#e6db74">&#34;com.tansor.dao.impl.UserDaoImpl&#34;</span><span style="color:#f92672">&gt;&lt;/bean&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/beans&gt;</span>
+</span></span></code></pre></div><h4 id="通过构造方法注入">通过构造方法注入</h4>
+<p><code>&lt;property name=&quot;userName&quot; ref=&quot;xiaoming&quot;&gt;&lt;/property&gt; </code><em><strong>中的</strong></em> <code>property</code> <em><strong>换成</strong></em> <code>constructor-arg</code></p>
+<h3 id="自动装配">自动装配</h3>
+<h4 id="根据name自动装配">根据name自动装配</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#75715e">&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;beans</span> <span style="color:#a6e22e">xmlns=</span><span style="color:#e6db74">&#34;http://www.springframework.org/schema/beans&#34;</span>
+</span></span><span style="display:flex;"><span>       <span style="color:#a6e22e">xmlns:xsi=</span><span style="color:#e6db74">&#34;http://www.w3.org/2001/XMLSchema-instance&#34;</span>
+</span></span><span style="display:flex;"><span>       <span style="color:#a6e22e">xsi:schemaLocation=</span><span style="color:#e6db74">&#34;http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;bean</span> <span style="color:#a6e22e">id=</span><span style="color:#e6db74">&#34;userService&#34;</span> <span style="color:#a6e22e">class=</span><span style="color:#e6db74">&#34;com.tansor.service.impl.UserServiceImpl&#34;</span> <span style="color:#a6e22e">autowire=</span><span style="color:#e6db74">&#34;byName&#34;</span><span style="color:#f92672">&gt;&lt;/bean&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">&lt;!--autowire为byName时，会自动检测UserServiceImpl中的set函数，去掉set首字母大写，并在寻找id与这个相同的bean进行导入--&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/beans&gt;</span>
+</span></span></code></pre></div><h4 id="根据type进行自动装配">根据type进行自动装配</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#75715e">&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;beans</span> <span style="color:#a6e22e">xmlns=</span><span style="color:#e6db74">&#34;http://www.springframework.org/schema/beans&#34;</span>
+</span></span><span style="display:flex;"><span>       <span style="color:#a6e22e">xmlns:xsi=</span><span style="color:#e6db74">&#34;http://www.w3.org/2001/XMLSchema-instance&#34;</span>
+</span></span><span style="display:flex;"><span>       <span style="color:#a6e22e">xsi:schemaLocation=</span><span style="color:#e6db74">&#34;http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;bean</span> <span style="color:#a6e22e">id=</span><span style="color:#e6db74">&#34;userService&#34;</span> <span style="color:#a6e22e">class=</span><span style="color:#e6db74">&#34;com.tansor.service.impl.UserServiceImpl&#34;</span> <span style="color:#a6e22e">autowire=</span><span style="color:#e6db74">&#34;byType&#34;</span><span style="color:#f92672">&gt;&lt;/bean&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">&lt;!--autowire为byName时，会自动检测UserServiceImpl中的set函数中参数的类型，并在寻找类型与这个相同的bean进行导入，如果相同类型bean数量对不上参数表中数量编译器就会报错--&gt;</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;bean</span> <span style="color:#a6e22e">id=</span><span style="color:#e6db74">&#34;userDao1&#34;</span> <span style="color:#a6e22e">class=</span><span style="color:#e6db74">&#34;com.tansor.dao.impl.UserDaoImpl&#34;</span><span style="color:#f92672">&gt;&lt;/bean&gt;</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;bean</span> <span style="color:#a6e22e">id=</span><span style="color:#e6db74">&#34;userDao2&#34;</span> <span style="color:#a6e22e">class=</span><span style="color:#e6db74">&#34;com.tansor.dao.impl.UserDaoImpl&#34;</span><span style="color:#f92672">&gt;&lt;/bean&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/beans&gt;</span>
+</span></span></code></pre></div><h3 id="黑马黑马程序员新版spring零基础入门到精通一套搞定spring全套视频教程含实战源码p26-p30不看了太麻烦了">黑马《黑马程序员新版Spring零基础入门到精通，一套搞定spring全套视频教程（含实战源码）》P26-P30不看了太麻烦了</h3>
+<h3 id="getbean三种api">getBean三种API</h3>
+<table>
+<thead>
+<tr>
+<th>方法定义</th>
+<th>返回的值和参数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Object getBean(String beanName)</td>
+<td>返回为Object，需要强行转换类型</td>
+</tr>
+<tr>
+<td>T getBean(Class Type)</td>
+<td>当beans中这种类型的bean只存在一个时可以用，否则不行</td>
+</tr>
+<tr>
+<td>T getBean(String beanName,Class type)</td>
+<td>肥肠好，指定classtype使用UserService.class</td>
+</tr>
+</tbody>
+</table>
+
     </div>
     <div class="post-footer">
       
