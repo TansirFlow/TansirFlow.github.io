@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Vue on Tansor&#39;s Blog</title>
+    <link>https://tansor1.github.io/tags/vue/</link>
+    <description>Recent content in Vue on Tansor&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 07 Mar 2024 22:20:23 +0800</lastBuildDate>
+    <atom:link href="https://tansor1.github.io/tags/vue/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>vue</title>
+      <link>https://tansor1.github.io/post/vue/vue/</link>
+      <pubDate>Thu, 07 Mar 2024 22:20:23 +0800</pubDate>
+      <guid>https://tansor1.github.io/post/vue/vue/</guid>
+      <description>模板语法 js表达式 &amp;lt;template&amp;gt; &amp;lt;h3&amp;gt;模板语法&amp;lt;/h3&amp;gt; &amp;lt;p&amp;gt;{{ msg }}&amp;lt;/p&amp;gt; &amp;lt;p&amp;gt;{{ num+1 }}&amp;lt;/p&amp;gt;&amp;lt;!--双花括号里面只能是单行且有返回值的运算--&amp;gt; &amp;lt;/template&amp;gt; &amp;lt;script&amp;gt; export default{ data(){ return{ msg:&amp;#34;vue语法&amp;#34;, num:10 } } } &amp;lt;/script&amp;gt; 插入原始Html &amp;lt;template&amp;gt; &amp;lt;h3&amp;gt;模板语法&amp;lt;/h3&amp;gt; &amp;lt;p&amp;gt;{{ msg }}&amp;lt;/p&amp;gt; &amp;lt;p&amp;gt;{{ num+1 }}&amp;lt;/p&amp;gt; &amp;lt;p v-html=&amp;#34;rawHtml&amp;#34;&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;!--插入原始html需要设置为v-html--&amp;gt; &amp;lt;/template&amp;gt; &amp;lt;script&amp;gt; export default{ data(){ return{ msg:&amp;#34;vue语法&amp;#34;, num:10, rawHtml:&amp;#34;&amp;lt;a href=&amp;#39;https://www.baidu.com&amp;#39;&amp;gt;测试链接&amp;lt;/a&amp;gt;&amp;#34; } } } &amp;lt;/script&amp;gt; 属性绑定 &amp;lt;template&amp;gt; &amp;lt;div v-bind:id=&amp;#34;dynamicId&amp;#34; :class=&amp;#34;dynamicClass&amp;#34;&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;!--前面加v-bind:或者直接加:--&amp;gt; &amp;lt;/template&amp;gt; &amp;lt;script&amp;gt; export default{ data(){ return{ dynamicClass:&amp;#34;appclass&amp;#34;, dynamicId:&amp;#34;appid&amp;#34; } } } &amp;lt;/script&amp;gt; &amp;lt;style&amp;gt; .appclass{ color:red; font-size:30px; } &amp;lt;/style&amp;gt; 或者直接绑定v-bind为对象</description>
+    </item>
+  </channel>
+</rss>
