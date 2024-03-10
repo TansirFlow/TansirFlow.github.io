@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="zh-cn">
   <head>
-    <title> // Tansor&#39;s Blog</title>
+    <title>MyBatis // Tansor&#39;s Blog</title>
     <link rel="shortcut icon" href="/favicon.ico" />
     <meta charset="utf-8" />
     <meta name="generator" content="Hugo 0.123.4">
@@ -12,21 +12,21 @@
     
 
     
-    <meta name="twitter:card" content="summary"/><meta name="twitter:title" content=""/>
+    <meta name="twitter:card" content="summary"/><meta name="twitter:title" content="MyBatis"/>
 <meta name="twitter:description" content="MyBatis mybatis – MyBatis 3 | Getting started
 配置MyBatis 导入Maven坐标
 &lt;dependency&gt; &lt;groupId&gt;org.mybatis&lt;/groupId&gt; &lt;artifactId&gt;mybatis&lt;/artifactId&gt; &lt;version&gt;3.5.5&lt;/version&gt; &lt;/dependency&gt; &lt;dependency&gt; &lt;groupId&gt;mysql&lt;/groupId&gt; &lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt; &lt;version&gt;5.1.49&lt;/version&gt; &lt;/dependency&gt; &lt;dependency&gt; &lt;groupId&gt;junit&lt;/groupId&gt; &lt;artifactId&gt;junit&lt;/artifactId&gt; &lt;version&gt;4.12&lt;/version&gt; &lt;scope&gt;test&lt;/scope&gt; &lt;/dependency&gt; &lt;dependency&gt; &lt;groupId&gt;org.slf4j&lt;/groupId&gt; &lt;artifactId&gt;slf4j-api&lt;/artifactId&gt; &lt;version&gt;1.7.25&lt;/version&gt; &lt;/dependency&gt; &lt;dependency&gt; &lt;groupId&gt;ch.qos.logback&lt;/groupId&gt; &lt;artifactId&gt;logback-classic&lt;/artifactId&gt; &lt;version&gt;1.2.3&lt;/version&gt; &lt;/dependency&gt; &lt;dependency&gt; &lt;groupId&gt;ch.qos.logback&lt;/groupId&gt; &lt;artifactId&gt;logback-core&lt;/artifactId&gt; &lt;version&gt;1.2.3&lt;/version&gt; &lt;/dependency&gt; 在resources中添加配置文件logback.xml
 &lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt; &lt;configuration&gt; &lt;!-- console表示当前日志信息是可以输出到控制台的--&gt; &lt;appender name=&#34;Console&#34; class=&#34;ch.qos.logback.core.ConsoleAppender&#34;&gt; &lt;encoder&gt; &lt;pattern&gt;[%level] %blue(%d{HH:mm:ss.SSS}) %cyan([%thread]) %boldGreen(%logger{15}) - %msg %n&lt;/pattern&gt; &lt;/encoder&gt; &lt;/appender&gt; &lt;logger name=&#34;com.Carter_x&#34; level=&#34;DEBUG&#34; additivity=&#34;false&#34;&gt; &lt;appender-ref ref=&#34;Console&#34;/&gt; &lt;/logger&gt; &lt;/configuration&gt; 创建文件mybatis-config.xml"/>
 
-    <meta property="og:title" content="" />
+    <meta property="og:title" content="MyBatis" />
 <meta property="og:description" content="MyBatis mybatis – MyBatis 3 | Getting started
 配置MyBatis 导入Maven坐标
 &lt;dependency&gt; &lt;groupId&gt;org.mybatis&lt;/groupId&gt; &lt;artifactId&gt;mybatis&lt;/artifactId&gt; &lt;version&gt;3.5.5&lt;/version&gt; &lt;/dependency&gt; &lt;dependency&gt; &lt;groupId&gt;mysql&lt;/groupId&gt; &lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt; &lt;version&gt;5.1.49&lt;/version&gt; &lt;/dependency&gt; &lt;dependency&gt; &lt;groupId&gt;junit&lt;/groupId&gt; &lt;artifactId&gt;junit&lt;/artifactId&gt; &lt;version&gt;4.12&lt;/version&gt; &lt;scope&gt;test&lt;/scope&gt; &lt;/dependency&gt; &lt;dependency&gt; &lt;groupId&gt;org.slf4j&lt;/groupId&gt; &lt;artifactId&gt;slf4j-api&lt;/artifactId&gt; &lt;version&gt;1.7.25&lt;/version&gt; &lt;/dependency&gt; &lt;dependency&gt; &lt;groupId&gt;ch.qos.logback&lt;/groupId&gt; &lt;artifactId&gt;logback-classic&lt;/artifactId&gt; &lt;version&gt;1.2.3&lt;/version&gt; &lt;/dependency&gt; &lt;dependency&gt; &lt;groupId&gt;ch.qos.logback&lt;/groupId&gt; &lt;artifactId&gt;logback-core&lt;/artifactId&gt; &lt;version&gt;1.2.3&lt;/version&gt; &lt;/dependency&gt; 在resources中添加配置文件logback.xml
 &lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt; &lt;configuration&gt; &lt;!-- console表示当前日志信息是可以输出到控制台的--&gt; &lt;appender name=&#34;Console&#34; class=&#34;ch.qos.logback.core.ConsoleAppender&#34;&gt; &lt;encoder&gt; &lt;pattern&gt;[%level] %blue(%d{HH:mm:ss.SSS}) %cyan([%thread]) %boldGreen(%logger{15}) - %msg %n&lt;/pattern&gt; &lt;/encoder&gt; &lt;/appender&gt; &lt;logger name=&#34;com.Carter_x&#34; level=&#34;DEBUG&#34; additivity=&#34;false&#34;&gt; &lt;appender-ref ref=&#34;Console&#34;/&gt; &lt;/logger&gt; &lt;/configuration&gt; 创建文件mybatis-config.xml" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://tansor1.github.io/post/ssm/mybatis/" /><meta property="article:section" content="post" />
-
-
+<meta property="article:published_time" content="2024-03-07T22:20:23+08:00" />
+<meta property="article:modified_time" content="2024-03-07T22:20:23+08:00" />
 
 
 
@@ -64,14 +64,14 @@
       
   <article class="post">
     <header class="post-header">
-      <h1 class ="post-title"></h1>
+      <h1 class ="post-title">MyBatis</h1>
       <div class="post-meta">
         <div>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
   <title>calendar</title>
   <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
 </svg>
-          Jan 1, 0001
+          Mar 7, 2024
         </div>
         <div>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
@@ -79,6 +79,13 @@
   <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
 </svg>
           3 min read
+        </div>
+        <div>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tag">
+  <title>tag</title>
+  <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line>
+</svg>
+              <a class="tag" href="https://tansor1.github.io/tags/ssm/">Ssm</a>
         </div>
       </div>
     </header>
